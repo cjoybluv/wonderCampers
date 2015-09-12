@@ -1,0 +1,23 @@
+<div class="container" ng-app="BloggyApp">
+  <div ng-controller="NavCtrl">
+    <div class="pull-left">
+      <a href="/">Home</a> |
+      <a href="/about">About</a>
+    </div>
+    <div class="pull-right">
+      User: {{currentUser.firstName}}
+      <span ng-if="currentUser">
+        {{currentUser.firstName || 'Unknown User'}}
+      </span>
+      <a ng-click="showLogin()" ng-hide="currentUser">Login</a>
+      <a ng-click="logout()" ng-show="currentUser">Logout</a>
+   </div>
+
+  </div>
+
+  <div id="loader" ng-if="$root.loading">
+    Loading...
+  </div>
+
+  <ng-view></ng-view>
+</div>

@@ -1,0 +1,10 @@
+query string  optional  query filter criteria. Searches on recreation area name, description, keywords, and stay limit.
+limit numeric optional  number of records to return (max 50)
+offset  numeric optional  start record of overall result set
+full  string  optional  return the full record details or compact (abbreviated) details
+latitude  numeric optional  Latitude of the point in decimal degrees
+longitude numeric optional  Longitude of the point in decimal degrees
+radius  numeric optional  Distance (in miles) by which to include search results
+state string  optional  comma delimited list of 2 character state codes
+activity  string  optional  comma delimited list of activity IDs (see activities)
+lastupdated date  optional  return all records modified since this date

@@ -1,0 +1,5 @@
+﻿key: 5722E187D51D46678DC8F5B047FCB82E
+
+
+user: dave_hemmer
+pass: <stnd>##
