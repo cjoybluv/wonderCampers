@@ -41,6 +41,13 @@ module.exports.routes = {
   'post /api/auth':'AuthController.login',
   'delete /api/auth':'AuthController.logout',
 
+  "get *":{
+    controller:"PagesController",
+    action:"index",
+    skipAssets: true,
+    skipRegex: /^\/api\/.*$/
+  }
+
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
