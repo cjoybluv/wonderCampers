@@ -1,4 +1,4 @@
-BloggyApp.controller('NavCtrl', ['$scope','$modal','UserService', function($scope,$modal,UserService){
+WonderCampersApp.controller('NavCtrl', ['$scope','$modal','UserService', function($scope,$modal,UserService){
 
   // UserService.logout();
   console.log('nav ctrl new');
