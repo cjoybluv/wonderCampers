@@ -71,8 +71,6 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
     $rootScope.loading = true;
     $scope.recareas = [];
 
-    // var outOfData = false;
-    // var offset = 0;
 
     return $http({
       url:'/api/ridb/recareas',
@@ -81,23 +79,29 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
       }
     }).then(function(data){
       console.log('search return',data);
-      // if (data.data != "OUT OF DATA") {
-      //   // console.log('data.data',data.data);
-      //   $scope.recareas = $scope.recareas.concat(data.data);
-      //   console.log('push data',$scope.recareas);
-      // } else {
-      //   outOfData = true;
-      //   $rootScope.loading = false;
-      // }
       $scope.recareas = data.data;
       $rootScope.loading = false;
       return data;
     });
-
-
-
   };
 
+  $scope.searchFacilities = function() {
+    console.log('searchFacilities...',$scope.search.state);
+    $rootScope.loading = true;
+    $scope.facilities = [];
+
+    return $http({
+      url:'/api/ridb/facilities',
+      params:{
+        recAreaID: $scope.search.recAreaID
+      }
+    }).then(function(data){
+      console.log('search return',data);
+      $scope.facilities = data.data;
+      $rootScope.loading = false;
+      return data;
+    });
+  };
 
 
 }]);

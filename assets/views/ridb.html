@@ -18,13 +18,42 @@
   </md-input-container>
 </form>
 
+<form ng-submit="searchFacilities()" role="form">
+  <md-input-container>
+    <div layout="row" layout-align="space-around center">
+      <div flex>
+        <label>Rec Area</label>
+        <md-select ng-model="search.recAreaID">
+          <md-option ng-repeat="recarea in recareas" value="{{recarea.RecAreaID}}">{{recarea.RecAreaName}}</md-option>
+        </md-select>
+      </div>
+      <div flex>
+        <md-button class="md-primary" type="submit">Search</md-button>
+      </div>
+    </div>
+  </md-input-container>
+</form>
+
+
 <div layout="column" layout-padding layout-margin layout-fill>
-  <h3>Search Results returned {{ recareas.length }} records...</h3>
+  <h3>State Search Results returned {{ recareas.length }} records...</h3>
   <md-whiteframe ng-repeat="recarea in recareas" class="md-whiteframe-z4" layout layout-align="center center">
     <div flex layout="column">
       <h3>{{recarea.RecAreaName}}</h3>
       <div layout="row" class="rec-area">
         <div ng-bind-html="recarea.RecAreaDescription"></div>
+      </div>
+    </div>
+  </md-whiteframe>
+</div>
+
+<div layout="column" layout-padding layout-margin layout-fill>
+  <h3>Rec Area Search Results returned {{ facilities.length }} records...</h3>
+  <md-whiteframe ng-repeat="facility in facilities" class="md-whiteframe-z4" layout layout-align="center center">
+    <div flex layout="column">
+      <h3>{{facility.FacilityName}}</h3>
+      <div layout="row" class="rec-area">
+        <div ng-bind-html="facility.FacilityDescription"></div>
       </div>
     </div>
   </md-whiteframe>
