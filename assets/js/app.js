@@ -1,5 +1,5 @@
 
-var WonderCampersApp = angular.module('WonderCampersApp',['ui.bootstrap','ngRoute','sailsResource','ngMessages']);
+var WonderCampersApp = angular.module('WonderCampersApp',['ui.bootstrap','ngRoute','sailsResource','ngMessages','ngMaterial']);
 
 WonderCampersApp.run(['UserService',function(UserService){
 
@@ -28,6 +28,10 @@ WonderCampersApp.config(['$routeProvider','$locationProvider','sailsResourceProv
   .when('/about',{
     templateUrl: '/views/about.html',
     controller: 'AboutCtrl'
+  })
+  .when('/ridb',{
+    templateUrl: '/views/ridb.html',
+    controller: 'RidbCtrl'
   })
   .otherwise({
     templateUrl:'/views/404.html'

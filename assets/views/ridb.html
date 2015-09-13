@@ -1,0 +1,29 @@
+<h2>Welcome to the Recreational Information Db Search Tool</h2>
+
+
+
+<form ng-submit="searchRecareas()" role="form">
+  <md-input-container>
+    <div layout="row" layout-align="space-around center">
+      <div flex>
+        <label>State</label>
+        <md-select ng-model="search.state">
+          <md-option ng-repeat="state in searchTables.usStates" value="{{state.abbreviation}}">{{state.name}}</md-option>
+        </md-select>
+      </div>
+      <div flex>
+        <md-button class="md-primary" type="submit">Search</md-button>
+      </div>
+    </div>
+  </md-input-container>
+</form>
+
+<div layout="column" layout-padding layout-margin layout-fill>
+  <md-whiteframe ng-repeat="recarea in recareas" class="md-whiteframe-z4" layout layout-align="center center">
+    <div flex layout="column">
+      <h3>{{recarea.RecAreaName}}</h3>
+      <p>{{recarea.RecAreaDescription}}</p>
+    </div>
+  </md-whiteframe>
+</div>
+

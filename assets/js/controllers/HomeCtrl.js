@@ -12,7 +12,7 @@ WonderCampersApp.controller('HomeCtrl', ['$scope','$modal','$rootScope','AlertSe
   // console.log('forth get',AlertService.get());
 
 
-  $rootScope.loading = true;
+  // $rootScope.loading = true;
 
 
 }]);
