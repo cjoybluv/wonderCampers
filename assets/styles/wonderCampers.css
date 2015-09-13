@@ -1,0 +1,17 @@
+html {
+  background-color: #eeeeee;
+}
+body {
+  margin: 0 20px;
+  background-color: #eeeeee;
+}
+md-whiteframe h3 {
+  margin-left: 10px;
+}
+md-whiteframe p {
+  margin-left: 20px;
+}
+.rec-area {
+  margin: 0 20px 0 20px;
+  padding-left: 20px;
+}

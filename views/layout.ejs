@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <base href="/">
 
-    <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link rel="stylesheet" media="screen" href="//cdnjs.cloudflare.com/ajax/libs/angular-material/0.11.0/angular-material.min.css">
+    <link rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/0.11.0/angular-material.min.css">
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-messages.js"></script>
@@ -18,6 +17,8 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-aria.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-animate.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material/0.11.0/angular-material.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-sanitize.min.js"></script>
+
 
     <!--
         Stylesheets and Preprocessors
@@ -42,11 +43,17 @@
 
     <!--STYLES-->
     <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/wonderCampers.css">
     <!--STYLES END-->
   </head>
 
   <body>
-    <%- body %>
+
+    <div layout="column" layout-margin layout-padding>
+
+      <%- body %>
+
+    </div>
 
 
 

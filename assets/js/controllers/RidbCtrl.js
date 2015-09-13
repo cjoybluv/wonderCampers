@@ -1,4 +1,4 @@
-WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertService','$http', function($scope,$modal,$rootScope,AlertService,$http){
+WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertService','$http','$sce', function($scope,$modal,$rootScope,AlertService,$http,$sce){
   console.log('Ridb controller');
 
   $rootScope.loading = false;
@@ -69,6 +69,10 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
   $scope.searchRecareas = function() {
     console.log('searchRecareas...',$scope.search.state);
     $rootScope.loading = true;
+    $scope.recareas = [];
+
+    // var outOfData = false;
+    // var offset = 0;
 
     return $http({
       url:'/api/ridb/recareas',
@@ -77,11 +81,22 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
       }
     }).then(function(data){
       console.log('search return',data);
-      $rootScope.loading = false;
+      // if (data.data != "OUT OF DATA") {
+      //   // console.log('data.data',data.data);
+      //   $scope.recareas = $scope.recareas.concat(data.data);
+      //   console.log('push data',$scope.recareas);
+      // } else {
+      //   outOfData = true;
+      //   $rootScope.loading = false;
+      // }
       $scope.recareas = data.data;
+      $rootScope.loading = false;
       return data;
     });
-  }
+
+
+
+  };
 
 
 

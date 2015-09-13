@@ -1,5 +1,5 @@
 
-var WonderCampersApp = angular.module('WonderCampersApp',['ui.bootstrap','ngRoute','sailsResource','ngMessages','ngMaterial']);
+var WonderCampersApp = angular.module('WonderCampersApp',['ui.bootstrap','ngRoute','sailsResource','ngMessages','ngMaterial','ngSanitize']);
 
 WonderCampersApp.run(['UserService',function(UserService){
 

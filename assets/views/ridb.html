@@ -19,10 +19,13 @@
 </form>
 
 <div layout="column" layout-padding layout-margin layout-fill>
+  <h3>Search Results returned {{ recareas.length }} records...</h3>
   <md-whiteframe ng-repeat="recarea in recareas" class="md-whiteframe-z4" layout layout-align="center center">
     <div flex layout="column">
       <h3>{{recarea.RecAreaName}}</h3>
-      <p>{{recarea.RecAreaDescription}}</p>
+      <div layout="row" class="rec-area">
+        <div ng-bind-html="recarea.RecAreaDescription"></div>
+      </div>
     </div>
   </md-whiteframe>
 </div>
