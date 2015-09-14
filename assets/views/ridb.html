@@ -20,10 +20,10 @@
         <span ng-show="search.recAreaID" ng-click="searchRecareas()" class="search-reset"><a href="#">reset</a></span>
       </div>
     </md-input-container>
-    <div>
+    <div ng-show="recareas">
       <span ng-repeat="(key, value) in iconSet">
-        <img src="/images/{{value}}">
-        <h5>ActivityID: {{key}}</h5>
+        <a ng-click="activityClicked(key)" href="#"><img src="/images/{{value}}">
+        <h5>ActivityID: {{key}}</h5></a>
       </span>
     </div>
   </div>

@@ -41,24 +41,28 @@ module.exports = {
               full:true
             }
           },function(error,response,body) {
+            // console.log('response received ' + pageOffset);
             pageOffset++;
             if(!error && response.statusCode === 200) {
               myData = myData.concat(JSON.parse(body).RECDATA);
               totalCount = JSON.parse(body).METADATA.RESULTS.TOTAL_COUNT;
               if (myData.length >= totalCount) {
-                console.log('totalCount reached');
+                // console.log('totalCount reached');
                 outOfData = true;
               }
+              setTimeout(callback, 5);
+
             } else {
               res.send({
                 error:error,
                 code:response.statusCode
               });
             }
+
           });
-          setTimeout(callback, 3000);
         },
         function (err) {
+          // console.log('async done');
             myData.sort(sortRecareas);
             res.send(myData);
         }
@@ -73,7 +77,7 @@ module.exports = {
     var myData = [];
     var totalCount = 0;
 
-    console.log('facilities',searchTerm);
+    // console.log('facilities',searchTerm);
 
     if (!searchTerm) {
       return false;
@@ -95,9 +99,10 @@ module.exports = {
               myData = myData.concat(JSON.parse(body).RECDATA);
               totalCount = JSON.parse(body).METADATA.RESULTS.TOTAL_COUNT;
               if (myData.length >= totalCount) {
-                console.log('totalCount reached');
+                // console.log('totalCount reached');
                 outOfData = true;
               }
+              setTimeout(callback, 5);
             } else {
               res.send({
                 error:error,
@@ -105,7 +110,6 @@ module.exports = {
               });
             }
           });
-          setTimeout(callback, 3000);
         },
         function (err) {
           myData.sort(sortFacilities);

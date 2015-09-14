@@ -98,12 +98,17 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
       { name: 'WYOMING', abbreviation: 'WY' }
   ];
 
+  var recAreasReturned = [];
+  var facilitiesReturned = [];
+
   $scope.searchRecareas = function() {
     console.log('searchRecareas...',$scope.search.state);
     $rootScope.loading = true;
     $scope.recareas = [];
     $scope.facilities = [];
+    $scope.activityFilter = [];
     $scope.search.recAreaID = '';
+
 
     return $http({
       url:'/api/ridb/recareas',
@@ -113,6 +118,7 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
     }).then(function(data){
       console.log('search return',data);
       $scope.recareas = data.data;
+      recAreasReturned = data.data;
       $rootScope.loading = false;
       return data;
     });
@@ -122,6 +128,7 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
     console.log('searchFacilities...',$scope.search.recAreaID);
     $rootScope.loading = true;
     $scope.facilities = [];
+    $scope.activityFilter = [];
 
     return $http({
       url:'/api/ridb/facilities',
@@ -131,10 +138,44 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
     }).then(function(data){
       console.log('search return',data);
       $scope.facilities = data.data;
+      facilitiesReturned = data.data;
       $rootScope.loading = false;
       return data;
     });
   };
 
+  var raActFilter = function(ra) {
+    var includeRA = false;
+    if (typeof ra.ACTIVITY == 'object') {
+      // console.log('raFilter',ra.ACTIVITY);
+      for (var i=0;i<ra.ACTIVITY.length;i++) {
+        if ($scope.activityFilter.indexOf(ra.ACTIVITY[i].ActivityID) != -1) {
+          includeRA = true;
+        }
+      }
+    }
+    return includeRA;
+  };
+
+  $scope.activityFilter = [];
+  $scope.activityClicked = function(id) {
+    console.log('activityClicked',id);
+    if ($scope.activityFilter.indexOf(parseInt(id)) == -1) {
+      $scope.activityFilter.push(parseInt(id));
+    } else {
+      $scope.activityFilter.splice($scope.activityFilter.indexOf(parseInt(id)),1);
+    }
+    if ($scope.facilities.length == 0) {
+      // do recareas filter
+      console.log('recareas filter',$scope.activityFilter);
+      // console.log('ra filter raReturned 0',typeof recAreasReturned[0].ACTIVITY);
+      // console.log('ra filter raReturned',recAreasReturned);
+      $scope.recareas = [];
+      $scope.recareas = recAreasReturned.filter(raActFilter);
+    } else {
+      // do facilities filter
+    }
+
+  };
 
 }]);
