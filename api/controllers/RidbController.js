@@ -56,7 +56,7 @@ module.exports = {
               });
             }
           });
-          setTimeout(callback, 2000);
+          setTimeout(callback, 3000);
         },
         function (err) {
             myData.sort(sortRecareas);
@@ -105,7 +105,7 @@ module.exports = {
               });
             }
           });
-          setTimeout(callback, 2000);
+          setTimeout(callback, 3000);
         },
         function (err) {
           myData.sort(sortFacilities);

@@ -3,7 +3,7 @@
 
 
 <div layout="row">
-  <div flex="3">
+  <div flex="33">
     <md-input-container>
       <div layout="row" layout-align="start center" class="search-input">
         <md-select ng-model="search.state" ng-change="searchRecareas()" placeholder="Select State">
@@ -20,6 +20,12 @@
         <span ng-show="search.recAreaID" ng-click="searchRecareas()" class="search-reset"><a href="#">reset</a></span>
       </div>
     </md-input-container>
+    <div>
+      <span ng-repeat="(key, value) in iconSet">
+        <img src="/images/{{value}}">
+        <h5>ActivityID: {{key}}</h5>
+      </span>
+    </div>
   </div>
 
   <div flex="67" layout layout-wrap>
@@ -35,7 +41,7 @@
           <div flex layout="column">
             <h3>{{recarea.RecAreaName}} - {{recarea.RecAreaID}}</h3>
             <div layout="row" class="search-result">
-              <div ng-bind-html="recarea.RecAreaDescription"></div>
+              <div ng-bind-html="recarea.RecAreaDescription | shortDesc | toTrusted"></div>
             </div>
           </div>
         </md-whiteframe>
@@ -54,7 +60,7 @@
           <div flex layout="column">
             <h3>{{facility.FacilityName}}: id: {{facility.FacilityID}}</h3>
             <div layout="row" class="search-result">
-              <div ng-bind-html="facility.FacilityDescription"></div>
+              <div ng-bind-html="facility.FacilityDescription | shortDesc"></div>
             </div>
           </div>
         </md-whiteframe>
