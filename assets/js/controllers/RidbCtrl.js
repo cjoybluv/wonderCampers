@@ -175,7 +175,10 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
     } else {
       // do facilities filter
     }
+  };
 
+  $scope.isFiltered = function(id) {
+    return $scope.activityFilter.indexOf(parseInt(id)) != -1;
   };
 
 }]);

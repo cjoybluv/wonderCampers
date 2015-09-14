@@ -5,6 +5,9 @@ body {
   margin: 0 20px;
   background-color: #eeeeee;
 }
+md-content {
+  background-color: #eeeeee;
+}
 .result-list {
   /*background-color: yellow;*/
   height: 400px;
@@ -27,4 +30,10 @@ md-whiteframe p {
   font-style: italic;
   font-size: 0.8em;
   margin-left: 5px;
+}
+filter-item {
+  height: 200px;
+}
+.activity-filtered {
+  background-color: red;
 }

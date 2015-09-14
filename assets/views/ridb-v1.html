@@ -19,35 +19,12 @@
         <span ng-show="search.recAreaID" ng-click="searchRecareas()" class="search-reset"><a href="#">reset</a></span>
       </div>
     </md-input-container>
-
-    <md-content layout-padding  ng-show="recareas">
-
-       <md-grid-list
-            md-cols-sm="1" md-cols-md="3" md-cols-gt-md="3"
-            md-row-height-gt-md="1:1" md-row-height="1:1"
-            md-gutter="12px" md-gutter-gt-sm="8px" >
-        <md-grid-tile
-            ng-repeat="(key, value) in iconSet"
-            class="filter-item">
-          <a ng-click="activityClicked(key)" href="#" ng-class="{'activity-filtered':(isFiltered(key))}"><img src="/images/{{value}}">
- <!--
-          <md-grid-tile-footer>
-            <h5>ActivityID: {{key}}</h5>
-          </md-grid-tile-footer>
-  -->
-        </md-grid-tile>
-      </md-grid-list>
-    </md-content>
-
-<!--
     <div ng-show="recareas">
       <span ng-repeat="(key, value) in iconSet" class="filter-item">
         <a ng-click="activityClicked(key)" href="#" ng-class="{'activity-filtered':(isFiltered(key))}"><img src="/images/{{value}}">
         <h5>ActivityID: {{key}}</h5></a>
       </span>
     </div>
- -->
-
   </div>
 
   <div flex="67" layout layout-wrap>
