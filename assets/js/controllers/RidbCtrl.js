@@ -70,7 +70,8 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
     console.log('searchRecareas...',$scope.search.state);
     $rootScope.loading = true;
     $scope.recareas = [];
-
+    $scope.facilities = [];
+    $scope.search.recAreaID = '';
 
     return $http({
       url:'/api/ridb/recareas',
@@ -86,7 +87,7 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
   };
 
   $scope.searchFacilities = function() {
-    console.log('searchFacilities...',$scope.search.state);
+    console.log('searchFacilities...',$scope.search.recAreaID);
     $rootScope.loading = true;
     $scope.facilities = [];
 

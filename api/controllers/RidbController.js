@@ -1,6 +1,23 @@
 var request = require('request');
 var async = require('async');
 
+function sortRecareas(a,b) {
+  if (a.RecAreaName < b.RecAreaName)
+    return -1;
+  if (a.RecAreaName > b.RecAreaName)
+    return 1;
+  return 0;
+}
+
+function sortFacilities(a,b) {
+  if (a.FacilityName < b.FacilityName)
+    return -1;
+  if (a.FacilityName > b.FacilityName)
+    return 1;
+  return 0;
+}
+
+
 module.exports = {
 
   // GET - /api/ridb/....
@@ -12,15 +29,9 @@ module.exports = {
     var myData = [];
     var totalCount = 0;
 
-
-    // var count = 0;
-
     async.until(
         function () { return (outOfData); },
         function (callback) {
-
-
-
           request({
             url:'https://ridb.recreation.gov/api/v1/recareas.json',
             qs:{
@@ -38,18 +49,6 @@ module.exports = {
                 console.log('totalCount reached');
                 outOfData = true;
               }
-              // var myData = JSON.parse(body).RECDATA;
-              // if (!myData.length){
-              //   outOfData = true;
-              // }
-              // pageOffset += 1;
-              console.log('RETURN',JSON.parse(body).RECDATA[0].RecAreaName);
-              console.log('inc pageOffset',pageOffset);
-              console.log('myData.length',myData.length);
-              console.log('totalCount',totalCount.toString());
-              // res.send(myData);
-              // res.send(totalCount.toString());
-
             } else {
               res.send({
                 error:error,
@@ -57,17 +56,13 @@ module.exports = {
               });
             }
           });
-          // count++;
-          // callback();
           setTimeout(callback, 2000);
         },
         function (err) {
-            // 5 seconds have passed
+            myData.sort(sortRecareas);
             res.send(myData);
         }
     );
-
-
   },
 
     facilities: function(req,res) {
@@ -103,10 +98,6 @@ module.exports = {
                 console.log('totalCount reached');
                 outOfData = true;
               }
-              console.log('inc pageOffset',pageOffset);
-              console.log('myData.length',myData.length);
-              console.log('totalCount',totalCount.toString());
-
             } else {
               res.send({
                 error:error,
@@ -117,7 +108,8 @@ module.exports = {
           setTimeout(callback, 2000);
         },
         function (err) {
-            res.send(myData);
+          myData.sort(sortFacilities);
+          res.send(myData);
         }
     );
   }
