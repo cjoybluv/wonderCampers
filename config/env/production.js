@@ -8,6 +8,6 @@ module.exports = {
     },
 
     models:{
-        connection: 'thisMongoDbServerProd'
+        connection: 'myMongoDbServerProd'
     }
 };
