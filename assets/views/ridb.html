@@ -1,5 +1,5 @@
 <h2>Welcome to the Recreational Information Db Search Tool</h2>
-v0.1.95  <br/>
+v0.1.991  <br/>
 
 
 <div layout="row">
@@ -58,9 +58,9 @@ v0.1.95  <br/>
               <div ng-bind-html="recarea.RecAreaDescription | shortDesc"></div>
               <section layout="row" layout-align="center center" layout-wrap>
                 <span ng-repeat="activity in recarea.ACTIVITY">
-                  <div layout="column">
-                    <img src="/images/icon_actv_{{activity.ActivityID}}.png" aria-label="{{activity.ActivityName}}" class="activity-icon" onError="this.onerror=null;this.src='/images/icon_blank.png';" />
-                    <div class="activity-label">{{activity.ActivityName | char20}}</div>
+                  <div layout="row" layout-align="center center" class="activity-item">
+                    <img src="/images/acticon-{{activity.ActivityID}}.png" aria-label="{{activity.ActivityName}}" class="activity-icon" onError="this.onerror=null;this.src='/images/icon_blank.png';" />
+                    <span class="activity-label">{{activity.ActivityName | char20}}</span>
                   </div>
                 </span>
               </section>

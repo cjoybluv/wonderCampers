@@ -2,254 +2,170 @@
     "RECDATA": [
         {
             "ActivityID": 4,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "AUTO TOURING"
         },
         {
             "ActivityID": 5,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "BIKING"
         },
         {
             "ActivityID": 6,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "BOATING"
         },
         {
             "ActivityID": 7,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "CLIMBING"
         },
         {
             "ActivityID": 8,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "HISTORIC & CULTURAL SITE"
         },
         {
             "ActivityID": 9,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "CAMPING"
         },
         {
             "ActivityID": 10,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "INTERPRETIVE PROGRAMS"
         },
         {
             "ActivityID": 11,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "FISHING"
         },
         {
             "ActivityID": 14,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "HIKING"
         },
         {
             "ActivityID": 15,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "HORSEBACK RIDING"
         },
         {
             "ActivityID": 16,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "HUNTING"
         },
         {
             "ActivityID": 18,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "OFF HIGHWAY VEHICLE"
         },
         {
             "ActivityID": 20,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "PICNICKING"
         },
         {
             "ActivityID": 22,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "WINTER SPORTS"
         },
         {
             "ActivityID": 23,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "RECREATIONAL VEHICLES"
         },
         {
             "ActivityID": 24,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "VISITOR CENTER"
         },
         {
             "ActivityID": 25,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "WATER SPORTS"
         },
         {
             "ActivityID": 26,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "WILDLIFE VIEWING"
         },
         {
             "ActivityID": 27,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "FISH HATCHERY"
         },
         {
             "ActivityID": 28,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "WILDERNESS"
         },
         {
             "ActivityID": 30,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "FIRE LOOKOUTS/CABINS OVERNIGHT"
         },
         {
             "ActivityID": 31,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "FISH VIEWING SITE"
         },
         {
             "ActivityID": 32,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "DAY USE AREA"
         },
         {
             "ActivityID": 33,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "DOCUMENTARY SITE"
         },
         {
             "ActivityID": 34,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "SWIMMING SITE"
         },
         {
             "ActivityID": 35,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "ORGANIZATION SITE PRIVATELY OWNED"
         },
         {
             "ActivityID": 36,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "ORGANIZATION SITE FS OWNED"
         },
         {
             "ActivityID": 37,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "PLAYGROUND PARK SPECIALIZED SPORT SITE"
         },
         {
             "ActivityID": 38,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "OTHER RECREATION CONCESSION SITE"
         },
         {
             "ActivityID": 39,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "OBSERVATION SITE"
         },
         {
             "ActivityID": 40,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "HOTEL/LODGE/RESORT FS OWNED"
         },
         {
             "ActivityID": 41,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "INFORMATION SITE"
         },
         {
             "ActivityID": 42,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "RECREATION RESIDENCE"
         },
         {
             "ActivityID": 43,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "SNOWPARK"
         },
         {
             "ActivityID": 44,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "HOTEL/LODGE/RESORT PRIVATELY OWNED"
         },
         {
             "ActivityID": 103,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "ENVIRONMENTAL EDUCATION"
         },
         {
             "ActivityID": 104,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "PHOTOGRAPHY"
         },
         {
             "ActivityID": 105,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "PADDLING"
         },
         {
             "ActivityID": 106,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "SWIMMING"
         },
         {
             "ActivityID": 107,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "DIVING"
         },
         {
             "ActivityID": 108,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "SNORKELING"
         },
         {
             "ActivityID": 109,
-            "ActivityLevel": 0,
-            "ActivityParentID": 0,
             "ActivityName": "HORSE CAMPING"
         }
     ],

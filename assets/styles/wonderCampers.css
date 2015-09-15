@@ -41,8 +41,12 @@ filter-item {
   width: 50px;
   max-height: 50px;
 }
+.activity-item {
+  margin-right: 15px;
+}
 .activity-icon {
-  margin: 35px;
+  margin: 5px;
+  width: 25px;
 }
 .activity-label {
   font-size: 0.7em;
