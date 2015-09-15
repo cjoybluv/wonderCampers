@@ -3,6 +3,25 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
 
   $rootScope.loading = false;
 
+
+  $scope.filterList = [
+    { "ActivityID": 5, "ActivityName": "BIKING" },
+    { "ActivityID": 6, "ActivityName": "BOATING" },
+    { "ActivityID": 11, "ActivityName": "FISHING" },
+    { "ActivityID": 14, "ActivityName": "HIKING" },
+    { "ActivityID": 15, "ActivityName": "HORSEBACK RIDING" },
+    { "ActivityID": 16, "ActivityName": "HUNTING" },
+    { "ActivityID": 20, "ActivityName": "PICNICKING" },
+    { "ActivityID": 22, "ActivityName": "WINTER SPORTS" },
+    { "ActivityID": 25, "ActivityName": "WATER SPORTS" },
+    { "ActivityID": 26, "ActivityName": "WILDLIFE VIEWING" },
+    { "ActivityID": 28, "ActivityName": "WILDERNESS" },
+    { "ActivityID": 43, "ActivityName": "SNOWPARK" },
+    { "ActivityID": 106, "ActivityName": "SWIMMING" }
+  ];
+
+
+
   $scope.iconSet = {
      "4":"_0015_auto-touring_13094.png",
      "5":"_0014_bicycle_536.png",
@@ -196,30 +215,121 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
   };
 
   var raActFilter = function(ra) {
-    var includeRA = false;
+    var activityFound = false;
+    var hasCamping = false;
+    var campingOnly = $scope.search.campingOnly;
+    var filterCount = $scope.activityFilter.length;
     if (typeof ra.ACTIVITY == 'object') {
       // console.log('raFilter',ra.ACTIVITY);
       for (var i=0;i<ra.ACTIVITY.length;i++) {
-        if ($scope.activityFilter.indexOf(ra.ACTIVITY[i].ActivityID) != -1) {
-          includeRA = true;
+        if (campingOnly) {
+          if (ra.ACTIVITY[i].ActivityID == 9) {
+            hasCamping = true;
+          }
+          if (filterCount > 0) {
+            if ($scope.activityFilter.indexOf(ra.ACTIVITY[i].ActivityID) != -1) {
+              activityFound = true;
+            }
+          } else {
+            activityFound = true;
+          }
+        } else {
+          if ($scope.activityFilter.indexOf(ra.ACTIVITY[i].ActivityID) != -1) {
+            activityFound = true;
+          }
         }
       }
     }
-    return includeRA;
+    var includeRec = false;
+    if (campingOnly) {
+      if (hasCamping) {
+        if (filterCount>0) {
+          if (activityFound) {
+            includeRec = true;
+          }
+        } else {
+          includeRec = true;
+        }
+      }
+    } else {
+      if (filterCount>0) {
+        if (activityFound) {
+          includeRec = true;
+        }
+      } else {
+        includeRec = true;
+      }
+    }
+    return includeRec;
   };
 
   var facActFilter = function(fac) {
-    var includeFac = false;
+    var activityFound = false;
+    var hasCamping = false;
+    var campingOnly = $scope.search.campingOnly;
+    var filterCount = $scope.activityFilter.length;
     if (typeof fac.ACTIVITY == 'object') {
+      // console.log('raFilter',fac.ACTIVITY);
       for (var i=0;i<fac.ACTIVITY.length;i++) {
-        if ($scope.activityFilter.indexOf(fac.ACTIVITY[i].ActivityID) != -1) {
-          includeFac = true;
+        if (campingOnly) {
+          if (fac.ACTIVITY[i].ActivityID == 9) {
+            hasCamping = true;
+          }
+          if (filterCount > 0) {
+            if ($scope.activityFilter.indexOf(fac.ACTIVITY[i].ActivityID) != -1) {
+              activityFound = true;
+            }
+          } else {
+            activityFound = true;
+          }
+        } else {
+          if ($scope.activityFilter.indexOf(fac.ACTIVITY[i].ActivityID) != -1) {
+            activityFound = true;
+          }
         }
       }
     }
-    return includeFac;
+    var includeRec = false;
+    if (campingOnly) {
+      if (hasCamping) {
+        if (filterCount>0) {
+          if (activityFound) {
+            includeRec = true;
+          }
+        } else {
+          includeRec = true;
+        }
+      }
+    } else {
+      if (filterCount>0) {
+        if (activityFound) {
+          includeRec = true;
+        }
+      } else {
+        includeRec = true;
+      }
+    }
+    return includeRec;
   };
 
+  $scope.campingOnly = function() {
+    if ($scope.facilities.length == 0) {
+      if ($scope.search.campingOnly || ($scope.activityFilter.length > 0)) {
+        $scope.recareas = [];
+        $scope.recareas = recAreasReturned.filter(raActFilter);
+
+      } else {
+        $scope.recareas = recAreasReturned;
+      }
+    } else {
+      if ($scope.search.campingOnly || ($scope.activityFilter.length > 0)) {
+        $scope.facilities = [];
+        $scope.facilities = facilitiesReturned.filter(facActFilter);
+      } else {
+        $scope.facilities = facilitiesReturned;
+      }
+    }
+  };
 
   $scope.activityFilter = [];
   $scope.activityClicked = function(id) {
@@ -229,7 +339,7 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
     } else {
       $scope.activityFilter.splice($scope.activityFilter.indexOf(parseInt(id)),1);
     }
-    if ($scope.activityFilter.length == 0) {
+    if ($scope.activityFilter.length == 0 && !$scope.search.campingOnly) {
       console.log('listZero',$scope.activityFilter);
       if ($scope.facilities.length == 0) {
         $scope.recareas = recAreasReturned;
