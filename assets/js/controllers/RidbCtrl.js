@@ -100,6 +100,7 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
 
   var recAreasReturned = [];
   var facilitiesReturned = [];
+  var stFacilities = [];
 
   $scope.searchRecareas = function() {
     console.log('searchRecareas...',$scope.search.state);
@@ -113,7 +114,7 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
     return $http({
       url:'/api/ridb/recareas',
       params:{
-        st: $scope.search.state
+        state: $scope.search.state
       }
     }).then(function(data){
       console.log('search return',data);
@@ -122,18 +123,47 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
       $rootScope.loading = false;
       return data;
     });
+
+
+  };
+
+  var facRAFilter = function(fac) {
+    var includeFac = false;
+    if (typeof fac.ACTIVITY == 'object') {
+      for (var i=0;i<fac.ACTIVITY.length;i++) {
+        if ($scope.activityFilter.indexOf(fac.ACTIVITY[i].ActivityID) != -1) {
+          includeFac = true;
+        }
+      }
+    }
+    return includeFac;
+  };
+
+  var getFacilityIDs = function(recAreaID) {
+    var facilityIDs = [];
+    for (var i=0;i<$scope.recareas.length;i++){
+      if ($scope.recareas[i].RecAreaID==recAreaID) {
+        for (var j=0;j<$scope.recareas[i].FACILITY.length;j++) {
+          facilityIDs.push($scope.recareas[i].FACILITY[j].FacilityID);
+        }
+        return facilityIDs;
+      }
+    }
   };
 
   $scope.searchFacilities = function() {
     console.log('searchFacilities...',$scope.search.recAreaID);
+    var facilityIDs = getFacilityIDs($scope.search.recAreaID);
+    if (facilityIDs.length==0) { return false;}
     $rootScope.loading = true;
     $scope.facilities = [];
     $scope.activityFilter = [];
 
-    return $http({
+    $http({
       url:'/api/ridb/facilities',
       params:{
-        recAreaID: $scope.search.recAreaID
+        // recAreaID: $scope.search.recAreaID
+        facilityIDs: facilityIDs
       }
     }).then(function(data){
       console.log('search return',data);
@@ -157,6 +187,19 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
     return includeRA;
   };
 
+  var facActFilter = function(fac) {
+    var includeFac = false;
+    if (typeof fac.ACTIVITY == 'object') {
+      for (var i=0;i<fac.ACTIVITY.length;i++) {
+        if ($scope.activityFilter.indexOf(fac.ACTIVITY[i].ActivityID) != -1) {
+          includeFac = true;
+        }
+      }
+    }
+    return includeFac;
+  };
+
+
   $scope.activityFilter = [];
   $scope.activityClicked = function(id) {
     console.log('activityClicked',id);
@@ -166,14 +209,11 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
       $scope.activityFilter.splice($scope.activityFilter.indexOf(parseInt(id)),1);
     }
     if ($scope.facilities.length == 0) {
-      // do recareas filter
-      console.log('recareas filter',$scope.activityFilter);
-      // console.log('ra filter raReturned 0',typeof recAreasReturned[0].ACTIVITY);
-      // console.log('ra filter raReturned',recAreasReturned);
       $scope.recareas = [];
       $scope.recareas = recAreasReturned.filter(raActFilter);
     } else {
-      // do facilities filter
+      $scope.facilities = [];
+      $scope.facilities = facilitiesReturned.filter(facActFilter);
     }
   };
 

@@ -22,7 +22,7 @@ module.exports = {
 
   // GET - /api/ridb/....
   recareas: function(req,res) {
-    var searchTerm = req.query.st;
+    var state = req.query.state;
     var pageOffset = 0;
     var activity = req.query.activity;
     var outOfData = false;
@@ -36,7 +36,7 @@ module.exports = {
             url:'https://ridb.recreation.gov/api/v1/recareas.json',
             qs:{
               apikey:'5722E187D51D46678DC8F5B047FCB82E',
-              state: searchTerm,
+              state: state,
               offset: pageOffset*50,
               full:true
             }
@@ -50,8 +50,8 @@ module.exports = {
                 // console.log('totalCount reached');
                 outOfData = true;
               }
-              setTimeout(callback, 5);
-
+              // setTimeout(callback, 5);
+              callback(null);
             } else {
               res.send({
                 error:error,
@@ -69,54 +69,54 @@ module.exports = {
     );
   },
 
-    facilities: function(req,res) {
-    var searchTerm = req.query.recAreaID.toString();
-    var pageOffset = 0;
-    var activity = req.query.activity;
-    var outOfData = false;
+  facilities: function(req,res) {
+    var facilityIDs = req.query.facilityIDs;
     var myData = [];
-    var totalCount = 0;
 
     // console.log('facilities',searchTerm);
 
-    if (!searchTerm) {
+    if (!facilityIDs) {
       return false;
     }
-    async.until(
-        function () { return (outOfData); },
-        function (callback) {
 
-          request({
-            url:'https://ridb.recreation.gov/api/v1/recareas/'+searchTerm+'/facilities.json',
-            qs:{
+    async.each(facilityIDs, function(facilityID, callback) {
+      console.log('Processing facility ',facilityID);
+
+      request({
+          url:'https://ridb.recreation.gov/api/v1/facilities/'+facilityID.toString(),
+          qs:{
               apikey:'5722E187D51D46678DC8F5B047FCB82E',
-              offset: pageOffset*50,
               full:true
             }
           },function(error,response,body) {
-            pageOffset++;
+            // console.log('response received ' + pageOffset);
             if(!error && response.statusCode === 200) {
-              myData = myData.concat(JSON.parse(body).RECDATA);
-              totalCount = JSON.parse(body).METADATA.RESULTS.TOTAL_COUNT;
-              if (myData.length >= totalCount) {
-                // console.log('totalCount reached');
-                outOfData = true;
-              }
-              setTimeout(callback, 5);
+              myData.push(JSON.parse(body));
+              console.log('facilities PUSH',myData.length);
             } else {
-              res.send({
-                error:error,
-                code:response.statusCode
-              });
+              callback('error on request');
+              // res.send('BAD THINGS');
+              // res.send({
+              //   error:error,
+              //   code:response.statusCode
+              // });
             }
-          });
-        },
-        function (err) {
+            callback();
+          },function (err) {
+              console.log('facilities DONE',myData.length);
+              myData.sort(sortFacilities);
+              res.send(myData);
+      });
+    }, function(err){
+        if( err ) {
+          console.log('bad things');
+        } else {
+          console.log('facilities DONE',myData.length);
           myData.sort(sortFacilities);
           res.send(myData);
         }
-    );
+    });
+
   }
 
 };
-

@@ -1,5 +1,6 @@
 <h2>Welcome to the Recreational Information Db Search Tool</h2>
-
+v0.1.5  <br/>
+facLen: {{facilities.length}}
 
 <div layout="row">
   <div flex="33">
@@ -14,7 +15,7 @@
     <md-input-container ng-show="recareas">
       <div layout="row" layout-align="start center" layout-wrap class="search-input">
         <md-select ng-model="search.recAreaID" ng-change="searchFacilities()" placeholder="Select Rec Area">
-          <md-option ng-repeat="recarea in recareas" value="{{recarea.RecAreaID}}">{{recarea.RecAreaName}}</md-option>
+          <md-option ng-repeat="recarea in recareas" value="{{recarea.RecAreaID}}">{{recarea.RecAreaName}} ({{recarea.FACILITY.length}})</md-option>
         </md-select>
         <span ng-show="search.recAreaID" ng-click="searchRecareas()" class="search-reset"><a href="#">reset</a></span>
       </div>
@@ -23,13 +24,13 @@
     <md-content layout-padding  ng-show="recareas">
 
        <md-grid-list
-            md-cols-sm="1" md-cols-md="3" md-cols-gt-md="3"
+            md-cols-sm="1" md-cols-md="4" md-cols-gt-md="4"
             md-row-height-gt-md="1:1" md-row-height="1:1"
             md-gutter="12px" md-gutter-gt-sm="8px" >
         <md-grid-tile
             ng-repeat="(key, value) in iconSet"
             class="filter-item">
-          <a ng-click="activityClicked(key)" href="#" ng-class="{'activity-filtered':(isFiltered(key))}"><img src="/images/{{value}}">
+          <a ng-click="activityClicked(key)" href="#" ng-class="{'activity-filtered':(isFiltered(key))}"><img src="/images/{{value}}"></a>
  <!--
           <md-grid-tile-footer>
             <h5>ActivityID: {{key}}</h5>
@@ -39,21 +40,12 @@
       </md-grid-list>
     </md-content>
 
-<!--
-    <div ng-show="recareas">
-      <span ng-repeat="(key, value) in iconSet" class="filter-item">
-        <a ng-click="activityClicked(key)" href="#" ng-class="{'activity-filtered':(isFiltered(key))}"><img src="/images/{{value}}">
-        <h5>ActivityID: {{key}}</h5></a>
-      </span>
-    </div>
- -->
-
   </div>
 
   <div flex="67" layout layout-wrap>
     <div ng-show="(search.state && !search.recAreaID)" layout="column" layout-padding layout-margin layout-fill>
       <h3>
-        State Search Results returned {{ recareas.length }} records...
+        Recreational Areas in <strong>{{ search.state }}</strong>: {{ recareas.length }}
         <div id="loader" ng-if="$root.loading">
            <strong>LOADING...</strong>
         </div>
@@ -61,9 +53,9 @@
       <div layout="column" layout-padding class="result-list">
         <md-whiteframe ng-repeat="recarea in recareas" class="md-whiteframe-z2" layout layout-align="center center">
           <div flex layout="column">
-            <h3>{{recarea.RecAreaName}} - {{recarea.RecAreaID}}</h3>
+            <h3>{{recarea.RecAreaName}} ({{recarea.FACILITY.length}})</h3>
             <div layout="row" class="search-result">
-              <div ng-bind-html="recarea.RecAreaDescription | shortDesc | toTrusted"></div>
+              <div ng-bind-html="recarea.RecAreaDescription | shortDesc"></div>
             </div>
           </div>
         </md-whiteframe>
@@ -72,7 +64,7 @@
 
     <div ng-show="search.recAreaID" layout="column" layout-padding layout-margin layout-fill>
       <h3>
-        Rec Area Search Results returned {{ facilities.length }} records...
+        Facilities in <strong>{{ search.recAreaID }}</strong>: {{ facilities.length }}
         <div id="loader" ng-if="$root.loading">
            <strong>LOADING...</strong>
         </div>
@@ -90,8 +82,4 @@
       </div>
   </div>
 </div>
-
-{{ activityFiltered }}
-
-
 
