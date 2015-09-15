@@ -1,5 +1,5 @@
 <h2>Welcome to the Recreational Information Db Search Tool</h2>
-v0.2.00  <br/>
+v0.2.03  <br/>
 
 
 <div layout="row">
@@ -20,6 +20,13 @@ v0.2.00  <br/>
         <span ng-show="search.recAreaID" ng-click="searchRecareas()" class="search-reset"><a href="#">reset</a></span>
       </div>
     </md-input-container>
+
+    <form ng-submit="searchQuery()">
+      <md-input-container ng-show="recareas" layout="column">
+        <input type="text" ng-model="search.query" name="text">
+        <input type="submit" id="submit" value="Submit" />
+      </md-input-container>
+    </form>
 
     <md-content layout-padding  ng-show="recareas">
 
@@ -43,7 +50,7 @@ v0.2.00  <br/>
   </div>
 
   <div flex="67" layout layout-wrap>
-    <div ng-show="(search.state && !search.recAreaID)" layout="column" layout-padding layout-margin layout-fill>
+    <div ng-show="(search.state && !search.recAreaID && !search.query)" layout="column" layout-padding layout-margin layout-fill>
       <h3>
         Recreational Areas in <strong>{{ search.state }}</strong>: {{ recareas.length }}
         <div id="loader" ng-if="$root.loading">
@@ -70,7 +77,7 @@ v0.2.00  <br/>
       </div>
     </div>
 
-    <div ng-show="search.recAreaID" layout="column" layout-padding layout-margin layout-fill>
+    <div ng-show="search.recAreaID || search.query" layout="column" layout-padding layout-margin layout-fill>
       <h3>
         Facilities in <strong>{{ search.recAreaID }}</strong>: {{ facilities.length }}
         <div id="loader" ng-if="$root.loading">

@@ -71,52 +71,102 @@ module.exports = {
 
   facilities: function(req,res) {
     var facilityIDs = req.query.facilityIDs;
+    var state = req.query.state;
+    var query = req.query.query;
     var myData = [];
+    var rqstParam = {};
 
-    // console.log('facilities',searchTerm);
 
-    if (!facilityIDs) {
+    if (!facilityIDs && !query) {
       return false;
     }
+    if (facilityIDs) {
+      async.each(facilityIDs, function(facilityID, callback) {
+        console.log('Processing facility ',facilityID);
 
-    async.each(facilityIDs, function(facilityID, callback) {
-      console.log('Processing facility ',facilityID);
-
-      request({
+        request({
           url:'https://ridb.recreation.gov/api/v1/facilities/'+facilityID.toString(),
           qs:{
               apikey:'5722E187D51D46678DC8F5B047FCB82E',
               full:true
+          }
+        },function(error,response,body) {
+              // console.log('response received ' + pageOffset);
+              if(!error && response.statusCode === 200) {
+                myData.push(JSON.parse(body));
+                console.log('facilities PUSH',myData.length);
+              } else {
+                callback('error on request');
+                // res.send({
+                //   error:error,
+                //   code:response.statusCode
+                // });
+              }
+              callback();
+            },function (err) {
+                console.log('facilities DONE',myData.length);
+                myData.sort(sortFacilities);
+                res.send(myData);
+        });
+      }, function(err){
+          if( err ) {
+            console.log('bad things');
+          } else {
+            console.log('facilities DONE',myData.length);
+            myData.sort(sortFacilities);
+            res.send(myData);
+          }
+      });
+
+
+    }
+    if (query) {
+      console.log('facilitiesQuery',query,state);
+      var outOfData = false;
+      var pageOffset = 0;
+      var totalCount = 0;
+
+      async.until(
+        function () { return (outOfData); },
+        function (callback) {
+          request({
+            url:'https://ridb.recreation.gov/api/v1/facilities.json',
+            qs:{
+              apikey:'5722E187D51D46678DC8F5B047FCB82E',
+              state: state,
+              query: query,
+              offset: pageOffset*50,
+              full:true
             }
           },function(error,response,body) {
-            // console.log('response received ' + pageOffset);
+            console.log('response received ',pageOffset,totalCount);
+            pageOffset++;
             if(!error && response.statusCode === 200) {
-              myData.push(JSON.parse(body));
-              console.log('facilities PUSH',myData.length);
+              myData = myData.concat(JSON.parse(body).RECDATA);
+              totalCount = JSON.parse(body).METADATA.RESULTS.TOTAL_COUNT;
+              if (myData.length >= totalCount) {
+                console.log('totalCount reached');
+                outOfData = true;
+              }
+              // setTimeout(callback, 5);
+              callback(null);
             } else {
-              callback('error on request');
-              // res.send('BAD THINGS');
-              // res.send({
-              //   error:error,
-              //   code:response.statusCode
-              // });
+              res.send({
+                error:error,
+                code:response.statusCode
+              });
             }
-            callback();
-          },function (err) {
-              console.log('facilities DONE',myData.length);
-              myData.sort(sortFacilities);
-              res.send(myData);
-      });
-    }, function(err){
-        if( err ) {
-          console.log('bad things');
-        } else {
-          console.log('facilities DONE',myData.length);
-          myData.sort(sortFacilities);
-          res.send(myData);
-        }
-    });
 
+          });
+        },
+        function (err) {
+          // console.log('async done');
+            myData.sort(sortFacilities);
+            res.send(myData);
+        }
+      );
+
+    }
   }
 
 };

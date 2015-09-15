@@ -174,6 +174,27 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
     });
   };
 
+  $scope.searchQuery = function() {
+    console.log('searchOnQuery...',$scope.search.query);
+    $rootScope.loading = true;
+    $scope.facilities = [];
+    $scope.activityFilter = [];
+
+    $http({
+      url:'/api/ridb/facilities',
+      params:{
+        query: $scope.search.query,
+        state: $scope.search.state
+      }
+    }).then(function(data){
+      console.log('search return',data);
+      $scope.facilities = data.data;
+      facilitiesReturned = data.data;
+      $rootScope.loading = false;
+      return data;
+    });
+  };
+
   var raActFilter = function(ra) {
     var includeRA = false;
     if (typeof ra.ACTIVITY == 'object') {
