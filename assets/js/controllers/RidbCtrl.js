@@ -208,6 +208,14 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
     } else {
       $scope.activityFilter.splice($scope.activityFilter.indexOf(parseInt(id)),1);
     }
+    if ($scope.activityFilter.length == 0) {
+      if ($scope.facilities.length == 0) {
+        $scope.recareas = recAreasReturned;
+      } else {
+        $scope.facilities = facilitiesReturned;
+      }
+      return true;
+    }
     if ($scope.facilities.length == 0) {
       $scope.recareas = [];
       $scope.recareas = recAreasReturned.filter(raActFilter);
