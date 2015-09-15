@@ -1,5 +1,5 @@
 <h2>Welcome to the Recreational Information Db Search Tool</h2>
-v0.2.03  <br/>
+v0.2.05  <br/>
 
 
 <div layout="row">
@@ -23,8 +23,8 @@ v0.2.03  <br/>
 
     <form ng-submit="searchQuery()">
       <md-input-container ng-show="recareas" layout="column">
-        <input type="text" ng-model="search.query" name="text">
         <input type="submit" id="submit" value="Submit" />
+        <input type="text" ng-model="search.query" name="text">
       </md-input-container>
     </form>
 
@@ -92,9 +92,9 @@ v0.2.03  <br/>
               <div ng-bind-html="facility.FacilityDescription | shortDesc"></div>
               <section layout="row" layout-align="center center" layout-wrap>
                 <span ng-repeat="activity in facility.ACTIVITY">
-                  <div layout="column">
+                  <div layout="row" layout-align="center center" class="activity-item">
                     <img src="/images/acticon-{{activity.ActivityID}}.png" aria-label="{{activity.ActivityName}}" class="activity-icon" onError="this.onerror=null;this.src='/images/icon_blank.png';" />
-                    <div class="activity-label">{{activity.ActivityName | char20}}</div>
+                    <span class="activity-label">{{activity.ActivityName | char20}}</span>
                   </div>
                 </span>
               </section>
