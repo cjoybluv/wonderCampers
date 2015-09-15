@@ -37,3 +37,13 @@ filter-item {
 .activity-filtered {
   background-color: red;
 }
+.filter-icon {
+  width: 50px;
+  max-height: 50px;
+}
+.activity-icon {
+  margin: 35px;
+}
+.activity-label {
+  font-size: 0.7em;
+}

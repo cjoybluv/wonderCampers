@@ -1,6 +1,6 @@
 <h2>Welcome to the Recreational Information Db Search Tool</h2>
-v0.1.5  <br/>
-facLen: {{facilities.length}}
+v0.1.95  <br/>
+
 
 <div layout="row">
   <div flex="33">
@@ -30,7 +30,7 @@ facLen: {{facilities.length}}
         <md-grid-tile
             ng-repeat="(key, value) in iconSet"
             class="filter-item">
-          <a ng-click="activityClicked(key)" href="#" ng-class="{'activity-filtered':(isFiltered(key))}"><img src="/images/{{value}}"></a>
+          <a ng-click="activityClicked(key)" href="#" ng-class="{'activity-filtered':(isFiltered(key))}"><img src="/images/{{value}}" class="filter-icon"></a>
  <!--
           <md-grid-tile-footer>
             <h5>ActivityID: {{key}}</h5>
@@ -54,8 +54,16 @@ facLen: {{facilities.length}}
         <md-whiteframe ng-repeat="recarea in recareas" class="md-whiteframe-z2" layout layout-align="center center">
           <div flex layout="column">
             <h3>{{recarea.RecAreaName}} ({{recarea.FACILITY.length}})</h3>
-            <div layout="row" class="search-result">
+            <div layout="column" class="search-result">
               <div ng-bind-html="recarea.RecAreaDescription | shortDesc"></div>
+              <section layout="row" layout-align="center center" layout-wrap>
+                <span ng-repeat="activity in recarea.ACTIVITY">
+                  <div layout="column">
+                    <img src="/images/icon_actv_{{activity.ActivityID}}.png" aria-label="{{activity.ActivityName}}" class="activity-icon" onError="this.onerror=null;this.src='/images/icon_blank.png';" />
+                    <div class="activity-label">{{activity.ActivityName | char20}}</div>
+                  </div>
+                </span>
+              </section>
             </div>
           </div>
         </md-whiteframe>
@@ -73,8 +81,16 @@ facLen: {{facilities.length}}
         <md-whiteframe ng-repeat="facility in facilities" class="md-whiteframe-z4" layout layout-align="center center">
           <div flex layout="column">
             <h3>{{facility.FacilityName}}: id: {{facility.FacilityID}}</h3>
-            <div layout="row" class="search-result">
+            <div layout="column" class="search-result">
               <div ng-bind-html="facility.FacilityDescription | shortDesc"></div>
+              <section layout="row" layout-align="center center" layout-wrap>
+                <span ng-repeat="activity in facility.ACTIVITY">
+                  <div layout="column">
+                    <img src="/images/icon_actv_{{activity.ActivityID}}.png" aria-label="{{activity.ActivityName}}" class="activity-icon" onError="this.onerror=null;this.src='/images/icon_blank.png';" />
+                    <div class="activity-label">{{activity.ActivityName | char20}}</div>
+                  </div>
+                </span>
+              </section>
             </div>
           </div>
         </md-whiteframe>
