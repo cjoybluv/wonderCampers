@@ -11,12 +11,16 @@ WonderCampersApp.run(['UserService',function(UserService){
 
 }]);
 
-WonderCampersApp.config(['$routeProvider','$locationProvider','sailsResourceProvider',function($routeProvider, $locationProvider,sailsResourceProvider){
+WonderCampersApp.config(['$routeProvider','$locationProvider','sailsResourceProvider','$mdThemingProvider',function($routeProvider, $locationProvider,sailsResourceProvider,$mdThemingProvider){
 
   sailsResourceProvider.configuration = {
     prefix: '/api',
     verbose: true
   };
+
+  $mdThemingProvider.theme('default')
+    .primaryPalette('green')
+    .accentPalette('lime');
 
   $locationProvider.html5Mode(true);
 

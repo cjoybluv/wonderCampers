@@ -82,7 +82,7 @@ module.exports = {
     }
     if (facilityIDs) {
       async.each(facilityIDs, function(facilityID, callback) {
-        console.log('Processing facility ',facilityID);
+        // console.log('Processing facility ',facilityID);
 
         request({
           url:'https://ridb.recreation.gov/api/v1/facilities/'+facilityID.toString(),
@@ -94,7 +94,7 @@ module.exports = {
               // console.log('response received ' + pageOffset);
               if(!error && response.statusCode === 200) {
                 myData.push(JSON.parse(body));
-                console.log('facilities PUSH',myData.length);
+                // console.log('facilities PUSH',myData.length);
               } else {
                 callback('error on request');
                 // res.send({
@@ -104,7 +104,7 @@ module.exports = {
               }
               callback();
             },function (err) {
-                console.log('facilities DONE',myData.length);
+                // console.log('facilities DONE',myData.length);
                 myData.sort(sortFacilities);
                 res.send(myData);
         });
@@ -112,7 +112,7 @@ module.exports = {
           if( err ) {
             console.log('bad things');
           } else {
-            console.log('facilities DONE',myData.length);
+            // console.log('facilities DONE',myData.length);
             myData.sort(sortFacilities);
             res.send(myData);
           }
@@ -121,7 +121,7 @@ module.exports = {
 
     }
     if (query) {
-      console.log('facilitiesQuery',query,state);
+      // console.log('facilitiesQuery',query,state);
       var outOfData = false;
       var pageOffset = 0;
       var totalCount = 0;
@@ -139,13 +139,13 @@ module.exports = {
               full:true
             }
           },function(error,response,body) {
-            console.log('response received ',pageOffset,totalCount);
+            // console.log('response received ',pageOffset,totalCount);
             pageOffset++;
             if(!error && response.statusCode === 200) {
               myData = myData.concat(JSON.parse(body).RECDATA);
               totalCount = JSON.parse(body).METADATA.RESULTS.TOTAL_COUNT;
               if (myData.length >= totalCount) {
-                console.log('totalCount reached');
+                // console.log('totalCount reached');
                 outOfData = true;
               }
               // setTimeout(callback, 5);
