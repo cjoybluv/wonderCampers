@@ -1,12 +1,32 @@
 html {
-  background-color: #eeeeee;
+  background-color: white;
 }
 body {
   margin: 0 20px;
-  background-color: #eeeeee;
 }
-md-content {
-  background-color: #eeeeee;
+.search-select {
+  margin-top: 60px;
+  width: 350px;
+  background-color: #46522C;
+  border-radius: 10px;
+}
+.search-select * {
+  color: #C1C727;
+  margin-left:10px;
+  margin-bottom: 10px;
+}
+#search-query-input {
+  width: 84%;
+}
+#search-query-submit {
+  background-color: #46522c;
+  color: #C1C727;
+  font-weight: 900;
+  font-size: 1.25em;
+  border-radius: 0 0 10px 10px;
+  padding: 5px;
+  height: 40px;
+  width: 86%;
 }
 .result-list {
   /*background-color: yellow;*/
@@ -43,12 +63,12 @@ filter-item {
   margin-top: 20px;
 }
 .activity-filtered {
-  background-color: #696969;
+  background-color: #ff5991;
 
 }
 .filter-icon {
-  width: 50px;
-  max-height: 50px;
+  width: 25px;
+  max-height: 25px;
   padding-bottom: 20px;
 }
 .activity-item {

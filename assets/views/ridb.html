@@ -1,20 +1,20 @@
 <h2>Welcome to the Recreational Information Db Search Tool</h2>
-v0.2.28  <br/>
+v0.2.37  <br/>
 
 
 <div layout="row">
   <div flex="33">
     <md-input-container>
       <div layout="row" layout-align="start center" class="search-input">
-        <md-select ng-model="search.state" ng-change="searchRecareas()" placeholder="Select State">
+        <md-select ng-model="search.state" ng-change="searchRecareas()" placeholder="Select State" class="search-select">
           <md-option ng-repeat="state in searchTables.usStates" value="{{state.abbreviation}}">{{state.name}}</md-option>
         </md-select>
       </div>
     </md-input-container>
-
+    <h4>Filter Below for Facility Listing</h4>
     <md-input-container ng-show="recareas">
       <div layout="row" layout-align="start center" layout-wrap class="search-input">
-        <md-select ng-model="search.recAreaID" ng-change="searchFacilities()" placeholder="Select Rec Area">
+        <md-select ng-model="search.recAreaID" ng-change="searchFacilities()" placeholder="Select Rec Area" class="search-select">
           <md-option ng-repeat="recarea in recareas" value="{{recarea.RecAreaID}}">{{recarea.RecAreaName}} ({{recarea.FACILITY.length}})</md-option>
         </md-select>
         <span ng-show="search.recAreaID" ng-click="searchRecareas()" class="search-reset"><a href="#">reset</a></span>
@@ -23,8 +23,8 @@ v0.2.28  <br/>
 
     <form ng-submit="searchQuery()">
       <md-input-container ng-show="recareas" layout="column">
-        <input type="submit" id="submit" value="Submit" />
-        <input type="text" ng-model="search.query" name="text">
+        <input type="submit" id="search-query-submit" value="Submit" />
+        <input type="text" ng-model="search.query" id="search-query-input" name="text" placeholder="Enter SearchTerm Query">
       </md-input-container>
     </form>
 
@@ -35,14 +35,14 @@ v0.2.28  <br/>
       </md-checkbox>
 
       <md-grid-list
-          md-cols-sm="1" md-cols-md="4" md-cols-gt-md="4"
+          md-cols-sm="1" md-cols-md="4" md-cols-gt-md="6"
           md-row-height-gt-md="1:1" md-row-height="1:1"
-          md-gutter="12px" md-gutter-gt-sm="8px" >
+          md-gutter="6px" md-gutter-gt-sm="4px" >
         <md-grid-tile
             ng-repeat="activity in filterList"
             class="filter-item"
             ng-class="{'activity-filtered':(isFiltered(activity.ActivityID))}">
-          <a ng-click="activityClicked(activity.ActivityID)" href="#"><img src="/images/acticon-{{activity.ActivityID}}.png" class="filter-icon">
+          <a ng-click="activityClicked(activity.ActivityID)" href="#" aria-label="Click to Filter on {{activity.ActivityName}}"><img src="/images/acticon-{{activity.ActivityID}}.png" class="filter-icon">
             <md-grid-tile-footer layout-align="center end" class="filter-footer">
               <h5>{{activity.ActivityName}}</h5>
             </md-grid-tile-footer>
@@ -54,6 +54,10 @@ v0.2.28  <br/>
   </div>
 
   <div flex="67" layout layout-wrap>
+    <div ng-show="(!search.state)">
+      <h3>Welcome to RI Db Search Instructions.</h3>
+    </div>
+
     <div ng-show="(search.state && !search.recAreaID && !search.query)" layout="column" layout-padding layout-margin layout-fill>
       <h3>
         Recreational Areas in <strong>{{ search.state }}</strong>: {{ recareas.length }}
