@@ -43,7 +43,8 @@ filter-item {
   margin-top: 20px;
 }
 .activity-filtered {
-  background-color: red;
+  background-color: #696969;
+
 }
 .filter-icon {
   width: 50px;
