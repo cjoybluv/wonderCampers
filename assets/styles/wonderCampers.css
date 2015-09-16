@@ -32,7 +32,15 @@ md-whiteframe p {
   margin-left: 5px;
 }
 filter-item {
-  height: 200px;
+  /*height: 200px;*/
+}
+.filter-footer {
+  background-color: inherit;
+}
+.filter-footer h5 {
+  color: black;
+  font-size: 0.7em;
+  margin-top: 20px;
 }
 .activity-filtered {
   background-color: red;
@@ -40,6 +48,7 @@ filter-item {
 .filter-icon {
   width: 50px;
   max-height: 50px;
+  padding-bottom: 20px;
 }
 .activity-item {
   margin-right: 15px;
