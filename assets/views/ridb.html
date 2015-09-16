@@ -8,7 +8,6 @@
       </div>
     </md-input-container>
     <md-input-container ng-show="recareas">
-      <h4>Filter Below for Facility Listing</h4>
       <div layout="row" layout-align="start center" layout-wrap class="search-input">
         <md-select ng-model="search.recAreaID" ng-change="searchFacilities()" placeholder="Select Rec Area" class="search-select">
           <md-option ng-repeat="recarea in recareas" value="{{recarea.RecAreaID}}">{{recarea.RecAreaName}} ({{recarea.FACILITY.length}})</md-option>
@@ -18,7 +17,7 @@
     </md-input-container>
 
     <form ng-submit="searchQuery()">
-      <md-input-container ng-show="recareas" layout="column">
+      <md-input-container ng-show="recareas" layout="column" id="search-query">
         <input type="submit" id="search-query-submit" value="Submit" />
         <input type="text" ng-model="search.query" id="search-query-input" name="text" placeholder="Enter SearchTerm Query">
       </md-input-container>
@@ -50,9 +49,9 @@
   </div>
 
 
-  <div flex="66" layout layout-wrap>
+  <md-content flex="66" layout layout-wrap>
     <div ng-show="(!search.state)">
-      v0.2.04
+      v0.2.14
       <h3>Welcome to RI Db Search Instructions.</h3>
     </div>
 
@@ -64,7 +63,7 @@
         </div>
       </h3>
 
-      <md-content>
+      <div class="scrollable-md">
         <md-list>
           <md-list-item class="md-3-line" ng-repeat="recarea in recareas">
             <div class="md-list-item-text">
@@ -82,7 +81,7 @@
             <md-divider ng-if="!$last"></md-divider>
           </md-list-item>
         </md-list>
-      </md-content>
+      </div>
     </div>
 
     <div ng-show="search.recAreaID || search.query" layout="column" layout-padding layout-margin layout-fill>
@@ -93,7 +92,7 @@
         </div>
       </h3>
 
-      <md-content>
+      <md-content class="scrollable-md">
         <md-list>
           <md-list-item class="md-3-line" ng-repeat="facility in facilities">
             <div class="md-list-item-text">
@@ -114,6 +113,6 @@
       </md-content>
 
     </div>
-  </div>
+  </md-content>
 </div>
 

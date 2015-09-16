@@ -15,8 +15,12 @@ body {
   margin-left:10px;
   margin-bottom: 10px;
 }
+#search-query {
+  width: 86%;
+}
 #search-query-input {
-  width: 84%;
+  /*width: 84%;*/
+  border-radius: 10px 10px 0 0;
 }
 #search-query-submit {
   background-color: #46522c;
@@ -26,7 +30,7 @@ body {
   border-radius: 0 0 10px 10px;
   padding: 5px;
   height: 40px;
-  width: 86%;
+  /*width: 86%;*/
 }
 .result-list {
   /*background-color: yellow;*/
@@ -45,6 +49,7 @@ md-whiteframe p {
 }
 .search-input {
   height: 25px;
+  margin-bottom: 20px;
 }
 .search-reset {
   font-style: italic;
@@ -79,4 +84,8 @@ filter-item {
 }
 .activity-label {
   font-size: 0.7em;
+}
+.scrollable-md {
+  max-height: 450px;
+  overflow: scroll;
 }
