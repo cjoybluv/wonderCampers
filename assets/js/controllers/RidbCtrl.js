@@ -177,6 +177,7 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
     $rootScope.loading = true;
     $scope.facilities = [];
     $scope.activityFilter = [];
+    $scope.search.campingOnly = false;
 
     $http({
       url:'/api/ridb/facilities',
@@ -198,6 +199,7 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
     $rootScope.loading = true;
     $scope.facilities = [];
     $scope.activityFilter = [];
+    $scope.search.campingOnly = false;
 
     $http({
       url:'/api/ridb/facilities',
@@ -212,6 +214,15 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
       $rootScope.loading = false;
       return data;
     });
+  };
+
+  $scope.getSearchRAName = function() {
+    if (!$scope.recareas) { return false; }
+    for (var i = 0; i<$scope.recareas.length;i++){
+      if ($scope.recareas[i].RecAreaID == $scope.search.recAreaID) {
+        return $scope.recareas[i].RecAreaName;
+      }
+    }
   };
 
   var raActFilter = function(ra) {

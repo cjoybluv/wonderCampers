@@ -18,15 +18,17 @@
 
     <form ng-submit="searchQuery()">
       <md-input-container ng-show="recareas" layout="column" id="search-query">
-        <input type="submit" id="search-query-submit" value="Submit" />
         <input type="text" ng-model="search.query" id="search-query-input" name="text" placeholder="Enter SearchTerm Query">
+      </md-input-container>
+      <md-input-container ng-show="recareas" layout="column" id="search-query">
+        <input type="submit" id="search-query-submit" value="Submit" aria-label="Submit search-term query">
       </md-input-container>
     </form>
 
     <md-content layout-padding  ng-show="recareas">
 
       <md-checkbox ng-change="campingOnly()" ng-model="search.campingOnly" aria-label="Check for Camping Only">
-        Camping Only?
+        <img src="/images/acticon-9.png" class="activity-icon">&nbsp;Camping Only?
       </md-checkbox>
 
       <md-grid-list
@@ -51,7 +53,7 @@
 
   <md-content flex="66" layout layout-wrap>
     <div ng-show="(!search.state)">
-      v0.2.14
+      v0.2.19
       <h3>Welcome to RI Db Search Instructions.</h3>
     </div>
 
@@ -86,7 +88,7 @@
 
     <div ng-show="search.recAreaID || search.query" layout="column" layout-padding layout-margin layout-fill>
       <h3>
-        Facilities in <strong>{{ search.recAreaID }}</strong>: {{ facilities.length }}
+        Facilities in <strong>{{ getSearchRAName() }}</strong>: {{ facilities.length }}
         <div id="loader" ng-if="$root.loading">
            <strong>LOADING...</strong>
         </div>
