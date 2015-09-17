@@ -18,10 +18,10 @@
 
     <form ng-submit="searchQuery()">
       <md-input-container ng-show="recareas" layout="column" id="search-query">
-        <input ng-disabled="$root.loading" type="text" ng-model="search.query" id="search-query-input" name="text" placeholder="Enter SearchTerm Query">
+        <input ng-required ng-disabled="$root.loading" type="text" ng-model="search.query" id="search-query-input" name="text" placeholder="Enter SearchTerm Query">
       </md-input-container>
       <md-input-container ng-show="recareas" layout="column" id="search-query">
-        <input type="submit" id="search-query-submit" value="Submit" aria-label="Submit search-term query">
+        <input ng-disabled="!search.query" type="submit" id="search-query-submit" value="Submit" aria-label="Submit search-term query">
       </md-input-container>
     </form>
 
@@ -57,13 +57,13 @@
 
   <md-content flex="66" layout layout-wrap>
     <div ng-show="(!search.state)">
-      v0.2.28
+      v0.2.30
       <h3>Welcome to RI Db Search Instructions.</h3>
     </div>
 
     <div ng-show="(search.state && !search.recAreaID && !search.query)" layout="column" layout-padding layout-margin layout-fill>
       <h3>
-        Recreational Areas in <strong>{{ search.state }}</strong>: {{ recareas.length }}
+        Recreational Areas in <strong>{{ search.state }}</strong>: ({{ recareas.length }})
         <div id="loader" ng-if="$root.loading">
            <strong>LOADING...</strong>
         </div>
@@ -92,7 +92,7 @@
 
     <div ng-show="search.recAreaID || search.query" layout="column" layout-padding layout-margin layout-fill>
       <h3>
-        Facilities in <strong>{{ getSearchRAName() }}</strong>: {{ facilities.length }}
+        Facilities for: <strong>{{ getSearchRAName() }}</strong>: ({{ facilities.length }})
         <div id="loader" ng-if="$root.loading">
            <strong>LOADING...</strong>
         </div>

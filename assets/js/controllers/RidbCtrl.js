@@ -222,10 +222,13 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$rootScope','AlertService','$
   };
 
   $scope.getSearchRAName = function() {
-    if (!$scope.recareas) { return false; }
-    for (var i = 0; i<$scope.recareas.length;i++){
-      if ($scope.recareas[i].RecAreaID == $scope.search.recAreaID) {
-        return $scope.recareas[i].RecAreaName;
+    if ($scope.search.query) {
+      return $scope.search.query;
+    } else if ($scope.recareas) {
+      for (var i = 0; i<$scope.recareas.length;i++){
+        if ($scope.recareas[i].RecAreaID == $scope.search.recAreaID) {
+          return $scope.recareas[i].RecAreaName;
+        }
       }
     }
   };
