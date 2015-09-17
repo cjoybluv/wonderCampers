@@ -2,30 +2,43 @@
   <div ng-controller="NavCtrl">
 
 
-  <div layout="column" layout-fill>
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-        <span>Wonder Campers</span>
-        <!-- fill up the space between left and right area -->
-        <span offset="5">
-          <a href="/">Home</a> |
-          <a href="/about">About</a> |
-          <a href="/ridb">Search RI Db</a> 0.21
-
-        </span>
-        <span flex></span>
-        <md-button>
-          <span ng-if="currentUser">
-            {{currentUser.firstName || 'Unknown User'}}
-          </span>
-          <a ng-click="showSignup($event)" ng-hide="currentUser">Signup</a>
-          <a ng-click="showLogin($event)" ng-hide="currentUser">Login</a>
-          <a ng-click="logout()" ng-show="currentUser">Logout</a>
-        </md-button>
-      </div>
-    </md-toolbar>
-    <md-content>
-      <ng-view></ng-view>
-    </md-content>
+    <div layout="column" layout-fill>
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <img src="/images/REI_logo.gif">
+          <span>Wonder Campers</span>
+          <!-- fill up the space between left and right area -->
+          <span flex></span>
+          <md-button>
+            <span ng-if="currentUser">
+              {{currentUser.firstName || 'Unknown User'}}
+            </span>
+            <a ng-click="showSignup($event)" ng-hide="currentUser">Signup</a>
+            <a ng-click="showLogin($event)" ng-hide="currentUser">Login</a>
+            <a ng-click="logout()" ng-show="currentUser">Logout</a>
+          </md-button>
+        </div>
+      </md-toolbar>
+      <md-toolbar layout="row" class="navbar">
+        <div flex class="navbar-button">
+          <div layout="column" layout-align="end center">
+            <a href="/" class="navbar-link">Home</a>
+          </div>
+        </div>
+        <div flex class="navbar-button">
+          <div layout="column" layout-align="end center">
+            <a href="/ridb" class="navbar-link">Discover</a>
+          </div>
+        </div>
+        <div flex class="navbar-button">
+          <div layout="column" layout-align="end center">
+            <a href="/about" class="navbar-link" layout-align="center center">About</a>
+          </div>
+        </div>
+      </md-toolbar>
+      <md-content>
+        <ng-view></ng-view>
+      </md-content>
+    </div>
   </div>
 </div>

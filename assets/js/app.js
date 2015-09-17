@@ -19,8 +19,8 @@ WonderCampersApp.config(['$routeProvider','$locationProvider','sailsResourceProv
   };
 
   $mdThemingProvider.theme('default')
-    .primaryPalette('green')
-    .accentPalette('lime');
+    .primaryPalette('grey')
+    .accentPalette('green');
 
   $locationProvider.html5Mode(true);
 
