@@ -382,7 +382,9 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$rootScope','AlertService','$
       $scope = saveScope;
     });
   };
- function DialogController(scope, $mdDialog, recArea) {
+
+
+  var DialogController = ['scope','$mdDialog','recArea', function(scope, $mdDialog, recArea) {
     scope.recArea = recArea;
 
     scope.answer = function(answer) {
@@ -392,6 +394,19 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$rootScope','AlertService','$
     scope.hide = function() {
       $mdDialog.hide();
     }
-  }
+  }];
+
+
+  // function DialogController(scope, $mdDialog, recArea) {
+  //   scope.recArea = recArea;
+
+  //   scope.answer = function(answer) {
+  //     console.log('ShowRADialogCtrl:answer',answer);
+  //   }
+
+  //   scope.hide = function() {
+  //     $mdDialog.hide();
+  //   }
+  // }
 
 }]);
