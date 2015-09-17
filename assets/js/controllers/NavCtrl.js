@@ -1,4 +1,4 @@
-WonderCampersApp.controller('NavCtrl', ['$scope','UserService','$mdDialog', function($scope,UserService,$mdDialog){
+WonderCampersApp.controller('NavCtrl', ['$scope','UserService','$mdDialog','$location', function($scope,UserService,$mdDialog,$location){
 
   // UserService.logout();
   console.log('nav ctrl new');
@@ -45,5 +45,11 @@ WonderCampersApp.controller('NavCtrl', ['$scope','UserService','$mdDialog', func
       //do nothing...
     });
   };
+
+  $scope.navClass = function (page) {
+    var currentRoute = $location.path().substring(1) || 'home';
+    return page === currentRoute ? 'active' : '';
+  };
+
 
 }]);

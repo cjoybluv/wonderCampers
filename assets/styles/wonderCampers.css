@@ -26,6 +26,12 @@ body {
   font-size: 0.8em;
   margin-top: 2px;
 }
+.active {
+  font-size: 1.0em;
+}
+.home-pictures {
+  margin-top: 25px;
+}
 .search-select {
   margin-top: 60px;
   width: 350px;
