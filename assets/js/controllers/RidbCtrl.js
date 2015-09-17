@@ -349,20 +349,29 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$rootScope','AlertService','$
     return $scope.activityFilter.indexOf(parseInt(id)) != -1;
   };
 
-  $scope.showRA = function(recArea,ev) {
+
+  // $scope.greeting = 'HellYeah';
+
+  $scope.hide = $mdDialog.hide;
+  // $scope.showDialog = showRA;
+
+  $scope.showRA = function(recArea,evt) {
     console.log('showRA',recArea);
-    $scope.show.recArea = recArea;
-    $mdDialog.show({
+    $scope.recArea = recArea;
+     $mdDialog.show({
+      targetEvent: evt,
       controller: 'ShowRADialogCtrl',
+      controllerAs: 'ctrl',
+      scope: $scope,
       templateUrl: '/views/discover/RADialog.html',
       parent: angular.element(document.body),
-      targetEvent: ev,
+      bindToController: true,
       clickOutsideToClose:true
     })
     .then(function(answer) {
-      // console.log('You said the information was "' + answer + '".');
+      console.log('You said the information was "' + answer + '".');
     }, function() {
-      // console.log('You cancelled the dialog.');
+      console.log('You cancelled the dialog.');
     });
   };
 
