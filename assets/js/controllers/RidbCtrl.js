@@ -17,7 +17,9 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$rootScope','AlertService','$
     { "ActivityID": 26, "ActivityName": "WILDLIFE" },
     { "ActivityID": 28, "ActivityName": "WILDERNESS" },
     { "ActivityID": 43, "ActivityName": "SNOWPARK" },
-    { "ActivityID": 106, "ActivityName": "SWIMMING" }
+    { "ActivityID": 106, "ActivityName": "SWIMMING" },
+    { "ActivityID": 105, "ActivityName": "PADDLING" },
+    { "ActivityID": 23, "ActivityName": "RV" }
   ];
 
 
