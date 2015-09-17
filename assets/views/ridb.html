@@ -59,6 +59,7 @@
     <div ng-show="(!search.state)">
       v0.2.30
       <h3>Welcome to RI Db Search Instructions.</h3>
+      <img src="/images/ridb_instruction.jpeg" height="450">
     </div>
 
     <div ng-show="(search.state && !search.recAreaID && !search.query)" layout="column" layout-padding layout-margin layout-fill>
@@ -72,7 +73,7 @@
       <div class="scrollable-md">
         <md-list>
           <md-list-item class="md-3-line" ng-repeat="recarea in recareas">
-            <div class="md-list-item-text">
+            <div class="md-list-item-text" ng-click="showRA(recarea.RecAreaID)">
               <h3>{{recarea.RecAreaName}} ({{recarea.FACILITY.length}})</h3>
               <p ng-bind-html="recarea.RecAreaDescription | shortDesc"></p>
               <section layout="row" layout-align="start center" layout-wrap offset="5">

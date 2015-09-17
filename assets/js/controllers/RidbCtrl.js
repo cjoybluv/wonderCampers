@@ -380,4 +380,8 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$rootScope','AlertService','$
     return $scope.activityFilter.indexOf(parseInt(id)) != -1;
   };
 
+  $scope.showRA = function(recAreaID) {
+    console.log('showRA',recAreaID);
+  };
+
 }]);
