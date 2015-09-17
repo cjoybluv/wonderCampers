@@ -1,4 +1,4 @@
-WonderCampersApp.controller('HomeCtrl', ['$scope','$modal','$rootScope','AlertService', function($scope,$modal,$rootScope,AlertService){
+WonderCampersApp.controller('HomeCtrl', ['$scope','$rootScope','AlertService', function($scope,$rootScope,AlertService){
   console.log('Home controller');
 
   // console.log('first get',AlertService.get());

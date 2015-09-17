@@ -36,6 +36,22 @@ WonderCampersApp.factory('UserService', ['$http', function($http) {
       .success(function(data){
         callback(null,data);
       }).error(callback);
+    },
+    signup: function(firstName,lastName,email,password,callback) {
+     var self = this;
+      $http.post('/api/user',{
+        firstName:firstName,
+        lastName:lastName,
+        email:email,
+        password:password
+      }).success(function(data){
+        if(data && data.result && data.user){
+          self.currentUser = data.user;
+        }else{
+          self.currentUser = false;
+        }
+        callback(null,data);
+      }).error(callback);
     }
   }
 }]);

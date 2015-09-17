@@ -27,9 +27,12 @@
 
     <md-content layout-padding  ng-show="recareas">
 
-      <md-checkbox ng-change="campingOnly()" ng-model="search.campingOnly" aria-label="Check for Camping Only">
-        <img src="/images/acticon-9.png" class="activity-icon">&nbsp;Camping Only?
-      </md-checkbox>
+      <div layout="row" layout-align="start center">
+        <md-checkbox ng-change="campingOnly()" ng-model="search.campingOnly" aria-label="Check for Camping Only">
+          Camping Only?
+        </md-checkbox>
+        <img src="/images/acticon-9.png" class="activity-icon">
+      </div>
 
       <md-grid-list
           md-cols-sm="1" md-cols-md="3" md-cols-gt-md="5"
@@ -53,7 +56,7 @@
 
   <md-content flex="66" layout layout-wrap>
     <div ng-show="(!search.state)">
-      v0.2.19
+      v0.2.21
       <h3>Welcome to RI Db Search Instructions.</h3>
     </div>
 

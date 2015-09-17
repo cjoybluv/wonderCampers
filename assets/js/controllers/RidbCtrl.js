@@ -1,4 +1,4 @@
-WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertService','$http','$sce', function($scope,$modal,$rootScope,AlertService,$http,$sce){
+WonderCampersApp.controller('RidbCtrl', ['$scope','$rootScope','AlertService','$http','$sce', function($scope,$rootScope,AlertService,$http,$sce){
   console.log('Ridb controller');
 
   $rootScope.loading = false;
@@ -128,6 +128,8 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
     $scope.facilities = [];
     $scope.activityFilter = [];
     $scope.search.recAreaID = '';
+    $scope.search.campingOnly = false;
+    $scope.search.query = '';
 
 
     return $http({
@@ -178,6 +180,7 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$modal','$rootScope','AlertSe
     $scope.facilities = [];
     $scope.activityFilter = [];
     $scope.search.campingOnly = false;
+    $scope.search.query = '';
 
     $http({
       url:'/api/ridb/facilities',

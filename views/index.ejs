@@ -10,7 +10,7 @@
         <span offset="5">
           <a href="/">Home</a> |
           <a href="/about">About</a> |
-          <a href="/ridb">Search RI Db</a> 0.12
+          <a href="/ridb">Search RI Db</a> 0.21
 
         </span>
         <span flex></span>
@@ -18,7 +18,8 @@
           <span ng-if="currentUser">
             {{currentUser.firstName || 'Unknown User'}}
           </span>
-          <a ng-click="showLogin()" ng-hide="currentUser">Login</a>
+          <a ng-click="showSignup($event)" ng-hide="currentUser">Signup</a>
+          <a ng-click="showLogin($event)" ng-hide="currentUser">Login</a>
           <a ng-click="logout()" ng-show="currentUser">Logout</a>
         </md-button>
       </div>

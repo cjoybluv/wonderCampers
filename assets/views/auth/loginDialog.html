@@ -1,0 +1,29 @@
+<md-dialog aria-label="Login" flex="30">
+  <form class="form" ng-submit="login()">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h3>WonderCampers:</h3>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="hide()">
+        <md-icon md-svg-src="images/cross106.svg" aria-label="Close dialog"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content style="max-width:800px;max-height:810px; ">
+      <md-input-container layout="column">
+        <label>E-Mail</label>
+        <input ng-model="user.email" type="text">
+      </md-input-container>
+      <md-input-container layout="column">
+        <label>Password</label>
+        <input ng-model="user.password" type="password">
+      </md-input-container>
+  </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button>
+     LOGIN
+    </md-button>
+  </div>
+  </form>
+</md-dialog>
