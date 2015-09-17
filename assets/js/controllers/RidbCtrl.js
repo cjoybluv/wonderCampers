@@ -222,7 +222,7 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$rootScope','AlertService','$
   };
 
   $scope.getSearchRAName = function() {
-    if ($scope.search.query) {
+    if (typeof $scope.search != 'undefined' && typeof $scope.search.query == 'string') {
       return $scope.search.query;
     } else if ($scope.recareas) {
       for (var i = 0; i<$scope.recareas.length;i++){
