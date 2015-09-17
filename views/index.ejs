@@ -6,16 +6,16 @@
       <md-toolbar>
         <div class="md-toolbar-tools">
           <img src="/images/REI_logo.gif">
-          <span>Wonder Campers</span>
+          <span flex="33" class="header-text" layout-align="start end">Wonder Campers</span>
           <!-- fill up the space between left and right area -->
           <span flex></span>
           <md-button>
             <span ng-if="currentUser">
-              {{currentUser.firstName || 'Unknown User'}}
+              Hello, {{currentUser.firstName || 'Unknown User'}}
             </span>
-            <a ng-click="showSignup($event)" ng-hide="currentUser">Signup</a>
-            <a ng-click="showLogin($event)" ng-hide="currentUser">Login</a>
-            <a ng-click="logout()" ng-show="currentUser">Logout</a>
+            <md-button class="md-raised" ng-hide="currentUser"><a ng-click="showSignup($event)">Signup</a></md-button>
+            <md-button class="md-raised" ng-hide="currentUser"><a ng-click="showLogin($event)">Login</a></md-button>
+            <md-button class="md-raised" ng-show="currentUser"><a ng-click="logout()">Logout</a></md-button>
           </md-button>
         </div>
       </md-toolbar>
@@ -32,7 +32,7 @@
         </div>
         <div flex class="navbar-button">
           <div layout="column" layout-align="end center">
-            <a href="/about" class="navbar-link" layout-align="center center">About</a>
+            <a href="/about" class="navbar-link">About</a>
           </div>
         </div>
       </md-toolbar>

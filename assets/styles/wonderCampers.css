@@ -7,6 +7,12 @@ body {
 .md-toolbar-tools {
   background-color: white;
 }
+.header-text {
+  font-size: 1.5em;
+  margin-bottom: 0px;
+  height: 20px;
+  padding-top: 7px;
+}
 .navbar {
   min-height: 28px;
 }
