@@ -357,22 +357,41 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$rootScope','AlertService','$
 
   $scope.showRA = function(recArea,evt) {
     console.log('showRA',recArea);
+
     $scope.recArea = recArea;
-     $mdDialog.show({
+    var thisScope = $scope;
+    var saveScope = $scope;
+    var parentEl = angular.element(document.body);
+    $mdDialog.show({
       targetEvent: evt,
-      controller: 'ShowRADialogCtrl',
-      controllerAs: 'ctrl',
-      scope: $scope,
+      controller: DialogController,
+      // controller: 'ShowRADialogCtrl',
+      // controllerAs: 'ctrl',
+      // scope: thisScope,
+      locals: {recArea: $scope.recArea},
       templateUrl: '/views/discover/RADialog.html',
-      parent: angular.element(document.body),
-      bindToController: true,
+      parent: parentEl,
+      // bindToController: true,
       clickOutsideToClose:true
     })
     .then(function(answer) {
       console.log('You said the information was "' + answer + '".');
+      $scope = saveScope;
     }, function() {
       console.log('You cancelled the dialog.');
+      $scope = saveScope;
     });
   };
+ function DialogController(scope, $mdDialog, recArea) {
+    scope.recArea = recArea;
+
+    scope.answer = function(answer) {
+      console.log('ShowRADialogCtrl:answer',answer);
+    }
+
+    scope.hide = function() {
+      $mdDialog.hide();
+    }
+  }
 
 }]);
