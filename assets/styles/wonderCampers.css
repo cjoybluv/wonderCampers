@@ -118,3 +118,38 @@ filter-item {
   max-height: 450px;
   overflow: scroll;
 }
+@media (max-width: 960px) {
+
+  .search-select {
+    margin-top: 6px;
+    width: 350px;
+    background-color: #46522C;
+    border-radius: 10px;
+  }
+  .search-select * {
+    color: #C1C727;
+    margin-left:10px;
+    margin-bottom: 10px;
+  }
+  #search-query {
+    width: 86%;
+  }
+  #search-query-input {
+    /*width: 84%;*/
+    border-radius: 10px 10px 0 0;
+  }
+  #search-query-submit {
+    background-color: #46522c;
+    color: #C1C727;
+    font-weight: 900;
+    font-size: 1.25em;
+    border-radius: 0 0 10px 10px;
+    padding: 5px;
+    height: 40px;
+    margin-top: -28px;
+    /*width: 86%;*/
+  }
+
+
+
+}

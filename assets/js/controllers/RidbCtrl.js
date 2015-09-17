@@ -1,4 +1,4 @@
-WonderCampersApp.controller('RidbCtrl', ['$scope','$rootScope','AlertService','$http','$sce', function($scope,$rootScope,AlertService,$http,$sce){
+WonderCampersApp.controller('RidbCtrl', ['$scope','$rootScope','AlertService','$http','$sce','$mdDialog', function($scope,$rootScope,AlertService,$http,$sce,$mdDialog){
   console.log('Ridb controller');
 
   $rootScope.loading = false;
@@ -22,39 +22,6 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$rootScope','AlertService','$
     { "ActivityID": 23, "ActivityName": "RV" }
   ];
 
-
-
-  $scope.iconSet = {
-     "4":"_0015_auto-touring_13094.png",
-     "5":"_0014_bicycle_536.png",
-     "6":"_0005_rv_27045.png",
-     "9":"_0013_camping_159381.png",
-     "11":"_0011_fishing_662.png",
-     "14":"_0010_hiking_45242.png",
-     "15":"_0007_horse-trailer_4057.png",
-     "20":"_0003_picnicbench_33638.png",
-     "22":"_0008_winter-sports_51046.png",
-     "23":"_0012_camper_675.png",
-     "25":"_0002_snorkeling_146710.png",
-     "26":"_0004_observationsite_100530.png",
-     "27":"_0011_fishing_662.png",
-     "28":"_0013_camping_159381.png",
-     "30":"_0004_observationsite_100530.png",
-     "31":"_0011_fishing_662.png",
-     "32":"_0003_picnicbench_33638.png",
-     "33":"_0004_observationsite_100530.png",
-     "34":"_0009_swimming_136537.png",
-     "35":"_0004_observationsite_100530.png",
-     "36":"_0004_observationsite_100530.png",
-     "37":"_0003_picnicbench_33638.png",
-     "38":"_0003_picnicbench_33638.png",
-     "39":"_0004_observationsite_100530.png",
-     "43":"_0008_winter-sports_51046.png",
-     "105":"_0006_paddling_45244.png",
-     "106":"_0009_swimming_136537.png",
-     "108":"_0002_snorkeling_146710.png",
-     "109":"_0007_horse-trailer_4057.png"
-  };
 
   $scope.searchTables = {};
   $scope.searchTables.usStates = [
@@ -122,6 +89,8 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$rootScope','AlertService','$
   var recAreasReturned = [];
   var facilitiesReturned = [];
   var stFacilities = [];
+  $scope.search = {};
+  $scope.show = {};
 
   $scope.searchRecareas = function() {
     console.log('searchRecareas...',$scope.search.state);
@@ -380,8 +349,21 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$rootScope','AlertService','$
     return $scope.activityFilter.indexOf(parseInt(id)) != -1;
   };
 
-  $scope.showRA = function(recAreaID) {
-    console.log('showRA',recAreaID);
+  $scope.showRA = function(recArea,ev) {
+    console.log('showRA',recArea);
+    $scope.show.recArea = recArea;
+    $mdDialog.show({
+      controller: 'ShowRADialogCtrl',
+      templateUrl: '/views/discover/RADialog.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true
+    })
+    .then(function(answer) {
+      // console.log('You said the information was "' + answer + '".');
+    }, function() {
+      // console.log('You cancelled the dialog.');
+    });
   };
 
 }]);
