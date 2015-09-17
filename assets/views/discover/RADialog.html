@@ -14,6 +14,7 @@
       <md-card-content>
         {{recArea.RECAREAADDRESS[0].RecAreaStreetAddress1}} <br/>
         {{recArea.RECAREAADDRESS[0].City}}, {{recArea.RECAREAADDRESS[0].AddressStateCode}}   {{recArea.RECAREAADDRESS[0].PostalCode}} <br/>
+        {{recArea.RecAreaEmail}}<span flex></span> {{recArea.RecAreaPhone}}
       </md-card-content>
     </md-card>
     <md-chips>
@@ -26,6 +27,13 @@
       <md-chip>
         LINK: {{recArea.LINK.length}}
       </md-chip>
+      <md-chip>
+        MEDIA: {{recArea.MEDIA.length}}
+      </md-chip>
+      <md-chip>
+        EVENT: {{recArea.EVENT.length}}
+      </md-chip>
+
     </md-chips>
 
     <md-card><md-card-content class="ra-card" ng-bind-html="recArea.RecAreaDescription"></md-card-content></md-card>
