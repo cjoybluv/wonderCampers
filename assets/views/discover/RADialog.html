@@ -1,4 +1,4 @@
-<md-dialog aria-label="Mango (Fruit)">
+<md-dialog aria-label="{{recArea.RecAreaName}}" flex="100">
   <form>
   <md-toolbar>
     <div class="md-toolbar-tools">
@@ -10,11 +10,26 @@
     </div>
   </md-toolbar>
   <md-dialog-content style="max-width:800px;max-height:810px;">
+    <md-card>
+      <md-card-content>
+        {{recArea.RECAREAADDRESS[0].RecAreaStreetAddress1}} <br/>
+        {{recArea.RECAREAADDRESS[0].City}}, {{recArea.RECAREAADDRESS[0].AddressStateCode}}   {{recArea.RECAREAADDRESS[0].PostalCode}} <br/>
+      </md-card-content>
+    </md-card>
+    <md-chips>
+      <md-chip>
+        ACTIVITY: {{recArea.ACTIVITY.length}}
+      </md-chip>
+      <md-chip>
+        FACILITY: {{recArea.FACILITY.length}}
+      </md-chip>
+      <md-chip>
+        LINK: {{recArea.LINK.length}}
+      </md-chip>
+    </md-chips>
 
+    <md-card><md-card-content class="ra-card" ng-bind-html="recArea.RecAreaDescription"></md-card-content></md-card>
 
-    <div ng-bind-html="recArea.RecAreaDescription">
-
-    </div>
   </md-dialog-content>
   <div class="md-actions" layout="row">
     <span flex></span>
@@ -27,3 +42,4 @@
   </div>
   </form>
 </md-dialog>
+

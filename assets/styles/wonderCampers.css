@@ -118,6 +118,10 @@ filter-item {
   max-height: 450px;
   overflow: scroll;
 }
+.ra-card {
+  max-height: 100px;
+  overflow: scroll;
+}
 @media (max-width: 960px) {
 
   .search-select {
