@@ -1,0 +1,87 @@
+{
+    "FacilityEmail": "",
+    "FacilityLongitude": -124.0789719,
+    "FacilityDescription": "<p>The first forest fire was reported from this&nbsp;fire lookout&nbsp;site in&nbsp;1918.&nbsp;Kloshe Nanitch Lookout structure has been removed but&nbsp;the area is maintained as a viewpoint.&nbsp;</p><p>On a clear day&nbsp;stunning views of the Sol Duc Watershed from its headwaters around Mt. Olympus as it snakes through the Sol Duc Valley to where it flows into the Pacific Ocean at LaPush.&nbsp;&nbsp;</p><p>This site is&nbsp;accessed by road or by hiking&nbsp;<a href=\"http://www.fs.usda.gov/recarea/olympic/recarea/?recid=47715\">Kloshe Nanitch Trail #882.1</a>&nbsp;3.2 miles from the <a href=\"http://www.fs.usda.gov/recarea/olympic/recreation/recarea/?recid=47713\">Kloshe Nanitch Trailhead</a>&nbsp;on the&nbsp;West Snider Road.&nbsp;</p><p>The access road, Forest Road 3040-595, is a steep one lane gravel road with turnouts. Experienced back road drivers are highly&nbsp;recommended.&nbsp;</p><p>View a printable recreation opportunity guide<strong>:&nbsp;</strong><a href=\"http://www.fs.usda.gov/Internet/FSE_DOCUMENTS/FSBDEV3_053573.pdf\">Kloshe Nanitch Trail #882.1</a> (PDF)</p>",
+    "FacilityLatitude": 48.08063448,
+    "ACTIVITY": [
+        {
+            "FacilityActivityFeeDescription": "",
+            "ActivityID": 14,
+            "FacilityActivityDescription": "",
+            "ActivityName": "HIKING",
+            "FacilityID": 238881
+        },
+        {
+            "FacilityActivityFeeDescription": "",
+            "ActivityID": 20,
+            "FacilityActivityDescription": "",
+            "ActivityName": "PICNICKING",
+            "FacilityID": 238881
+        }
+    ],
+    "FacilityTypeDescription": "",
+    "FacilityPhone": "",
+    "FacilityMapURL": "",
+    "FacilityReservationURL": "",
+    "FacilityDirections": "<p>From Forks, WA travel northeast on US Highway 101 for 20 miles. Turn left onto West Snider Road and follow for about 0.5 miles and go left towards Forest Service Road 3041 and travel 5 miles and stay right on Forest Road 3040. Then stay right on the 595 spur road for about a mile to the old lookout site and the top of Kloshe Nanitch Trail #882.1.&nbsp;</p><p><strong>Alert:</strong> Forest Service Road 3040-595, which accesses Kloshe Nanitch Observation Site, is a steep, rocky one-lane road with turnouts that requires experienced back road drivers and high clearance vehicles.</p><p><strong>See also</strong>: <a href=\"http://www.fs.usda.gov/recarea/olympic/recarea/?recid=47713\">Kloshe Nanitch Trailhead</a></p>",
+    "FacilityName": "Kloshe Nanitch Observation Site/Trailhead",
+    "TOUR": [],
+    "Keywords": "",
+    "FacilityUseFeeDescription": "",
+    "StayLimit": "",
+    "ORGANIZATION": [
+        {
+            "OrgAbbrevName": "FS",
+            "OrgJurisdictionType": "Federal",
+            "OrgType": "Department of Agriculture",
+            "LastUpdatedDate": "{ts '2007-02-26 00:00:00'}",
+            "OrgURLText": "fs.fed.us",
+            "OrgURLAddress": "http://www.fs.fed.us",
+            "OrgImageURL": "fs.jpg",
+            "OrgParentID": 163,
+            "OrgID": 131,
+            "OrgName": "USDA Forest Service"
+        }
+    ],
+    "LINK": [
+        {
+            "EntityType": "Facility",
+            "EntityID": 238881,
+            "LinkType": "Official Web Site",
+            "Description": "",
+            "URL": "http://www.fs.usda.gov/recarea/olympic/recarea/?recid=47711",
+            "EntityLinkID": 9498869,
+            "Title": "Kloshe Nanitch Observation Site/Trailhead"
+        }
+    ],
+    "GEOJSON": {
+        "COORDINATES": [
+            -124.0789719,
+            48.08063448
+        ],
+        "TYPE": "Point"
+    },
+    "LastUpdatedDate": "2015-09-17",
+    "CAMPSITE": [],
+    "MEDIA": [],
+    "FacilityAdaAccess": "",
+    "EVENT": [],
+    "LegacyFacilityID": "",
+    "PERMITENTRANCE": [],
+    "FACILITYADDRESS": [
+        {
+            "FacilityAddressID": 11096417,
+            "PostalCode": "",
+            "FacilityAddressType": "",
+            "AddressStateCode": "WA",
+            "FacilityStreetAddress1": "",
+            "City": "",
+            "FacilityStreetAddress3": "",
+            "FacilityStreetAddress2": "",
+            "FacilityID": 238881,
+            "AddressCountryCode": "USA"
+        }
+    ],
+    "OrgFacilityID": 47711,
+    "FacilityID": 238881
+}

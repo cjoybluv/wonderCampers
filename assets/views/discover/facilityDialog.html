@@ -1,0 +1,90 @@
+<md-dialog aria-label="{{facility.FacilityName}}" flex="100" class="full-dialog">
+  <form>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>{{facility.FacilityName}}</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="hide()">
+        <md-icon md-svg-src="/images/cross106.svg" aria-label="Close dialog"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content style="max-width:800px;max-height:810px;">
+    <div layout="row">
+      <div flex="50">
+        <md-card ng-if="facility.FACILITYADDRESS[0].City">
+          <md-card-content>
+            {{facility.FACILITYADDRESS[0].FacilityStreetAddress1}} <br/>
+            {{facility.FACILITYADDRESS[0].City}}, {{facility.FACILITYADDRESS[0].AddressStateCode}}   {{facility.FACILITYADDRESS[0].PostalCode}} <br/>
+            {{facility.FacilityEmail}}<span flex></span> {{facility.FacilityPhone}}<br/>
+            <md-button layout-align="end end" href="{{facility.FacilityMapURL}}" target="_blank">Goto Map</md-button>
+          </md-card-content>
+        </md-card>
+      </div>
+      <div flex="50" ng-if="facility.MEDIA && facility.MEDIA[0].MediaType=='Image'">
+        <img src="{{facility.MEDIA[0].URL}}" style="height:150px;float:right;">
+      </div>
+    </div>
+
+    <md-chips>
+      <md-chip>
+        ACTIVITY: {{facility.ACTIVITY.length}}
+      </md-chip>
+      <md-chip>
+        LINK: {{facility.LINK.length}}
+      </md-chip>
+      <md-chip>
+        MEDIA: {{facility.MEDIA.length}}
+      </md-chip>
+      <md-chip>
+        EVENT: {{facility.EVENT.length}}
+      </md-chip>
+    </md-chips>
+
+    <md-card><md-card-content class="ra-card">
+      <h3>Description</h3>
+      <div ng-bind-html="facility.FacilityDescription"></div>
+      <div ng-if="facility.FacilityReservationURL"><a href="{{facility.FacilityReservationURL}}" target="_blank"><h4>Reservations</h4></a></div>
+    </md-card-content></md-card>
+
+    <md-card><md-card-content class="ra-card">
+      <h3>Directions</h3>
+      <div ng-bind-html="facility.FacilityDirections"></div>
+    </md-card-content></md-card>
+
+    <div layout="row" flex flex-wrap>
+      <h4>Activities:</h4>
+      <section layout="row" layout-align="start center" layout-wrap offset="5">
+        <span ng-repeat="activity in facility.ACTIVITY">
+          <div layout="row" layout-align="center center" class="activity-item">
+            <img src="/images/acticon-{{activity.ActivityID}}.png" aria-label="{{activity.ActivityName}}" class="activity-icon" onError="this.onerror=null;this.src='/images/icon_blank.png';" />
+            <span class="activity-label">{{activity.ActivityName | char20}}</span>
+          </div>
+        </span>
+      </section>
+    </div>
+
+    <div layout="row" flex flex-wrap>
+      <h4>Links:</h4>
+      <md-chips ng-repeat="link in facility.LINK">
+          <md-chip>
+            <a href="{{link.URL}}" target="_blank">{{link.Title}}</a>
+          </md-chip>
+      </md-chips>
+    </div>
+
+
+
+  </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="answer('not useful')" >
+     Not Useful
+    </md-button>
+    <md-button ng-click="answer('useful')" style="margin-right:20px;" >
+      Useful
+    </md-button>
+  </div>
+  </form>
+</md-dialog>
+

@@ -406,17 +406,41 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$rootScope','AlertService','$
     }
   }];
 
+  $scope.showFacility = function(facility,evt) {
+    console.log('showFacility',facility);
 
-  // function DialogController(scope, $mdDialog, recArea) {
-  //   scope.recArea = recArea;
+    $scope.facility = facility;
 
-  //   scope.answer = function(answer) {
-  //     console.log('ShowRADialogCtrl:answer',answer);
-  //   }
+    var parentEl = angular.element(document.body);
+    $mdDialog.show({
+      targetEvent: evt,
+      controller: FacDialogCtrl,
+      locals: {
+        facility: $scope.facility
+      },
+      templateUrl: '/views/discover/facilityDialog.html',
+      parent: parentEl,
+      clickOutsideToClose:true
+    })
+    .then(function(answer) {
+      console.log('You said the information was "' + answer + '".');
+    }, function() {
+      console.log('You cancelled the dialog.');
+    });
+  };
 
-  //   scope.hide = function() {
-  //     $mdDialog.hide();
-  //   }
-  // }
+  var FacDialogCtrl = ['scope','$mdDialog','facility', function(scope, $mdDialog, facility) {
+    scope.facility = facility;
+
+    scope.answer = function(answer) {
+      console.log('ShowFacDialogCtrl:answer',answer);
+    }
+
+    scope.hide = function() {
+      $mdDialog.hide();
+    }
+  }];
+
+
 
 }]);

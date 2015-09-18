@@ -57,7 +57,7 @@
 
   <md-content flex="66" layout layout-wrap>
     <div ng-show="(!search.state)">
-      v0.2.45
+      v0.2.53
       <h3>Welcome to RI Db Search Instructions.</h3>
       <img src="/images/mt_lake.jpg" height="450">
     </div>
@@ -102,7 +102,7 @@
       <md-content class="scrollable-md">
         <md-list>
           <md-list-item class="md-3-line" ng-repeat="facility in facilities">
-            <div class="md-list-item-text">
+            <div class="md-list-item-text" ng-click="showFacility(facility,$event)">
               <h3>{{facility.FacilityName}}</h3>
               <p ng-bind-html="facility.FacilityDescription | shortDesc"></p>
               <section layout="row" layout-align="start center" layout-wrap offset="5">
