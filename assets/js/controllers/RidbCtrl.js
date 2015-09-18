@@ -191,9 +191,12 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$rootScope','AlertService','$
   };
 
   $scope.getSearchRAName = function() {
-    if (typeof $scope.search != 'undefined' && typeof $scope.search.query == 'string') {
+    // console.log('getSearchRAName',$scope.search);
+    if (typeof $scope.search != 'undefined' && $scope.search.query != '' ) {
+    // if ($scope.search) {
       return $scope.search.query;
-    } else if ($scope.recareas) {
+    } else if ($scope.search.recAreaID) {
+      console.log('getSearchRAName:iterate recareas',$scope.recareas.length);
       for (var i = 0; i<$scope.recareas.length;i++){
         if ($scope.recareas[i].RecAreaID == $scope.search.recAreaID) {
           return $scope.recareas[i].RecAreaName;
