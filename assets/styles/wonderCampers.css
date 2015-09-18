@@ -122,6 +122,11 @@ filter-item {
   max-height: 100px;
   overflow: scroll;
 }
+.full-dialog {
+  max-height: 600px;
+}
+
+
 @media (max-width: 960px) {
 
   .search-select {
@@ -153,7 +158,8 @@ filter-item {
     margin-top: -28px;
     /*width: 86%;*/
   }
-
-
+  .full-dialog {
+    max-height: 300px;
+  }
 
 }

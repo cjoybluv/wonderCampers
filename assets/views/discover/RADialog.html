@@ -1,22 +1,31 @@
-<md-dialog aria-label="{{recArea.RecAreaName}}" flex="100">
+<md-dialog aria-label="{{recArea.RecAreaName}}" flex="100" class="full-dialog">
   <form>
   <md-toolbar>
     <div class="md-toolbar-tools">
       <h2>{{recArea.RecAreaName}} ({{recArea.FACILITY.length}}) </h2>
       <span flex></span>
       <md-button class="md-icon-button" ng-click="hide()">
-        <md-icon md-svg-src="images/cross106.svg" aria-label="Close dialog"></md-icon>
+        <md-icon md-svg-src="/images/cross106.svg" aria-label="Close dialog"></md-icon>
       </md-button>
     </div>
   </md-toolbar>
   <md-dialog-content style="max-width:800px;max-height:810px;">
-    <md-card>
-      <md-card-content>
-        {{recArea.RECAREAADDRESS[0].RecAreaStreetAddress1}} <br/>
-        {{recArea.RECAREAADDRESS[0].City}}, {{recArea.RECAREAADDRESS[0].AddressStateCode}}   {{recArea.RECAREAADDRESS[0].PostalCode}} <br/>
-        {{recArea.RecAreaEmail}}<span flex></span> {{recArea.RecAreaPhone}}
-      </md-card-content>
-    </md-card>
+    <div layout="row">
+      <div flex="50">
+        <md-card ng-if="recArea.RECAREAADDRESS[0].City">
+          <md-card-content>
+            {{recArea.RECAREAADDRESS[0].RecAreaStreetAddress1}} <br/>
+            {{recArea.RECAREAADDRESS[0].City}}, {{recArea.RECAREAADDRESS[0].AddressStateCode}}   {{recArea.RECAREAADDRESS[0].PostalCode}} <br/>
+            {{recArea.RecAreaEmail}}<span flex></span> {{recArea.RecAreaPhone}}<br/>
+            <md-button layout-align="end end" href="{{recArea.RecAreaMapURL}}" target="_blank">Goto Map</md-button>
+          </md-card-content>
+        </md-card>
+      </div>
+      <div flex="50" ng-if="recArea.MEDIA">
+        <img src="{{recArea.MEDIA[0].URL}}" style="height:150px;float:right;">
+      </div>
+    </div>
+
     <md-chips>
       <md-chip>
         ACTIVITY: {{recArea.ACTIVITY.length}}
@@ -33,10 +42,18 @@
       <md-chip>
         EVENT: {{recArea.EVENT.length}}
       </md-chip>
-
     </md-chips>
 
-    <md-card><md-card-content class="ra-card" ng-bind-html="recArea.RecAreaDescription"></md-card-content></md-card>
+    <md-card><md-card-content class="ra-card">
+      <h3>Description</h3>
+      <div ng-bind-html="recArea.RecAreaDescription"></div>
+    </md-card-content></md-card>
+
+    <md-card><md-card-content class="ra-card">
+      <h3>Directions</h3>
+      <div ng-bind-html="recArea.RecAreaDirections"></div>
+    </md-card-content></md-card>
+
 
   </md-dialog-content>
   <div class="md-actions" layout="row">
