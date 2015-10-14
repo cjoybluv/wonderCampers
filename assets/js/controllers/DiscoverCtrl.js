@@ -1,5 +1,5 @@
-WonderCampersApp.controller('RidbCtrl', ['$scope','$rootScope','AlertService','$http','$sce','$mdDialog', function($scope,$rootScope,AlertService,$http,$sce,$mdDialog){
-  console.log('Ridb controller');
+WonderCampersApp.controller('DiscoverCtrl', ['$scope','$rootScope','AlertService','$http','$sce','$mdDialog', function($scope,$rootScope,AlertService,$http,$sce,$mdDialog){
+  console.log('Discover controller');
 
   $rootScope.loading = false;
 
@@ -102,6 +102,8 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$rootScope','AlertService','$
     $scope.search.query = '';
     recAreasReturned = [];
     facilitiesReturned = [];
+    $scope.search.radius = null;
+    $scope.search.placeName = '';
 
 
     return $http({
@@ -153,6 +155,8 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$rootScope','AlertService','$
     $scope.activityFilter = [];
     $scope.search.campingOnly = false;
     $scope.search.query = '';
+    $scope.search.radius = null;
+    $scope.search.placeName = '';
 
     $http({
       url:'/api/ridb/facilities',
@@ -183,7 +187,32 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$rootScope','AlertService','$
         state: $scope.search.state
       }
     }).then(function(data){
-      // console.log('search return',data);
+      console.log('search return',data);
+      $scope.facilities = data.data;
+      facilitiesReturned = data.data;
+      $rootScope.loading = false;
+      return data;
+    });
+  };
+
+  $scope.searchRadius = function() {
+    console.log('searchRadius');
+
+    $rootScope.loading = true;
+    $scope.facilities = [];
+    $scope.activityFilter = [];
+    $scope.search.query = '';
+    $scope.search.campingOnly = false;
+
+    $http({
+      url:'/api/ridb/facilities',
+      params:{
+        radius: $scope.search.radius,
+        placeName: $scope.search.placeName,
+        state: $scope.search.state
+      }
+    }).then(function(data){
+      console.log('search return',data);
       $scope.facilities = data.data;
       facilitiesReturned = data.data;
       $rootScope.loading = false;
@@ -193,16 +222,19 @@ WonderCampersApp.controller('RidbCtrl', ['$scope','$rootScope','AlertService','$
 
   $scope.getSearchRAName = function() {
     // console.log('getSearchRAName',$scope.search);
-    if (typeof $scope.search != 'undefined' && $scope.search.query != '' ) {
-    // if ($scope.search) {
-      return $scope.search.query;
-    } else if ($scope.search.recAreaID) {
-      // console.log('getSearchRAName:iterate recareas',$scope.recareas.length);
-      for (var i = 0; i<$scope.recareas.length;i++){
-        if ($scope.recareas[i].RecAreaID == $scope.search.recAreaID) {
-          return $scope.recareas[i].RecAreaName;
+    if (typeof $scope.search != 'undefined') {
+      if ($scope.search.query != '') {
+        return $scope.search.query;
+      } else if ($scope.search.radius != '' && $scope.search.placeName != '') {
+        return ("within " + $scope.search.radius + " miles of " + $scope.search.placeName);
+      } else if ($scope.search.recAreaID) {
+        for (var i = 0; i<$scope.recareas.length;i++){
+          if ($scope.recareas[i].RecAreaID == $scope.search.recAreaID) {
+            return $scope.recareas[i].RecAreaName;
+          }
         }
       }
+
     }
   };
 

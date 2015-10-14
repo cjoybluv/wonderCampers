@@ -34,7 +34,7 @@ body {
 }
 .search-select {
   margin-top: 60px;
-  width: 350px;
+  width: 100%;
   background-color: #46522C;
   border-radius: 10px;
 }
@@ -44,11 +44,14 @@ body {
   margin-bottom: 10px;
 }
 #search-query {
-  width: 86%;
+  width: 100%;
 }
 #search-query-input {
   /*width: 84%;*/
   border-radius: 10px 10px 0 0;
+  border-top: #46522C 2px solid;
+  border-left: #46522C 2px solid;
+  border-right: #46522C 2px solid;
 }
 #search-query-submit {
   background-color: #46522c;

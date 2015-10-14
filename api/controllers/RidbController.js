@@ -1,5 +1,6 @@
 var request = require('request');
 var async = require('async');
+var geocoder = require('geocoder');
 
 function sortRecareas(a,b) {
   if (a.RecAreaName < b.RecAreaName)
@@ -73,11 +74,13 @@ module.exports = {
     var facilityIDs = req.query.facilityIDs;
     var state = req.query.state;
     var query = req.query.query;
+    var radius = req.query.radius;
+    var placeName = req.query.placeName;
     var myData = [];
     var rqstParam = {};
 
 
-    if (!facilityIDs && !query) {
+    if (!facilityIDs && !query && !radius) {
       return false;
     }
     if (facilityIDs) {
@@ -121,7 +124,7 @@ module.exports = {
 
     }
     if (query) {
-      // console.log('facilitiesQuery',query,state);
+      console.log('facilitiesQuery',query,state);
       var outOfData = false;
       var pageOffset = 0;
       var totalCount = 0;
@@ -166,6 +169,66 @@ module.exports = {
         }
       );
 
+    }
+
+    if(radius && placeName) {
+      // console.log('radius & placeName',radius,placeName);
+      var coord = {};
+      geocoder.geocode(placeName+", "+state, function ( err, data ) {
+        if(typeof data.results[0] != 'undefined') {
+          coord.lat = data.results[0].geometry.location.lat;
+          coord.lng = data.results[0].geometry.location.lng;
+        }
+        // console.log('facilities :: radius',coord.lat,coord.lng);
+        var outOfData = false;
+        var pageOffset = 0;
+        var totalCount = 0;
+
+        async.until(
+          function () { return (outOfData); },
+          function (callback) {
+            request({
+              url:'https://ridb.recreation.gov/api/v1/facilities.json',
+              qs:{
+                apikey:'5722E187D51D46678DC8F5B047FCB82E',
+                state: state,
+                latitude: coord.lat,
+                longitude: coord.lng,
+                radius: radius,
+                offset: pageOffset*50,
+                full:true
+              }
+            },function(error,response,body) {
+              // console.log('response received ',pageOffset,totalCount);
+              pageOffset++;
+              if(!error && response.statusCode === 200) {
+                myData = myData.concat(JSON.parse(body).RECDATA);
+                totalCount = JSON.parse(body).METADATA.RESULTS.TOTAL_COUNT;
+                // console.log('response code 200 ',totalCount);
+                if (myData.length >= totalCount) {
+                  console.log('totalCount reached');
+                  outOfData = true;
+                }
+                // setTimeout(callback, 5);
+                callback(null);
+              } else {
+                res.send({
+                  error:error,
+                  code:response.statusCode
+                });
+              }
+
+            });
+          },
+          function (err) {
+            console.log('async done');
+            myData.sort(sortFacilities);
+            console.log('myData.length',myData.length);
+            res.send(myData);
+          }
+        );
+
+      }); // geocoder
     }
   }
 

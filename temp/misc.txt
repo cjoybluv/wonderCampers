@@ -1,3 +1,5 @@
+Wonder Campers is a REI micro-site supporting the thousands of volunteers who plan camping and outdoor events for inner city youth. The site includes planning tools to Discover, Book, Plan and Share adventures. The concept also extends REI’s successful loyalty program, allowing Members to ‘donate’ their REI dividends toward gear and supplies for aspiring campers in need.
+
 
     <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 

@@ -59,9 +59,17 @@ WonderCampersApp.config(['$routeProvider','$locationProvider','sailsResourceProv
     templateUrl: '/views/about.html',
     controller: 'AboutCtrl'
   })
-  .when('/ridb',{
-    templateUrl: '/views/ridb.html',
-    controller: 'RidbCtrl'
+  .when('/discover',{
+    templateUrl: '/views/discover.html',
+    controller: 'DiscoverCtrl'
+  })
+  .when('/plan',{
+    templateUrl: '/views/plan.html',
+    controller: 'PlanCtrl'
+  })
+  .when('/share',{
+    templateUrl: '/views/share.html',
+    controller: 'ShareCtrl'
   })
   .otherwise({
     templateUrl:'/views/404.html'

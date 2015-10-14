@@ -17,11 +17,23 @@
     </md-input-container>
 
     <form ng-submit="searchQuery()">
-      <md-input-container ng-show="recareas" layout="column" id="search-query">
-        <input ng-required ng-disabled="$root.loading" type="text" ng-model="search.query" id="search-query-input" name="text" placeholder="Enter SearchTerm Query">
+      <md-input-container ng-show="recareas" layout="column">
+        <input ng-required ng-disabled="$root.loading" type="search" ng-model="search.query" id="search-query-input" name="text" placeholder="OR Enter SearchTerm Query">
       </md-input-container>
-      <md-input-container ng-show="recareas" layout="column" id="search-query">
+      <md-input-container ng-show="recareas" layout="column">
         <input ng-disabled="!search.query" type="submit" id="search-query-submit" value="Submit" aria-label="Submit search-term query">
+      </md-input-container>
+    </form>
+
+    <form ng-submit="searchRadius()">
+      <md-input-container ng-show="recareas" layout="column">
+        <input ng-required ng-disabled="$root.loading" type="number" ng-model="search.radius" id="search-radius-input" name="radius" placeholder="Miles">
+      </md-input-container>
+      <md-input-container ng-show="recareas" layout="column">
+        <input ng-required ng-disabled="$root.loading" type="text" ng-model="search.placeName" id="search-placename-input" name="raduis" placeholder="Place Name">
+      </md-input-container>
+      <md-input-container ng-show="recareas" layout="column">
+        <input ng-disabled="!search.radius && !search.placeName" type="submit" id="search-query-submit" value="Submit" aria-label="Submit search-term query">
       </md-input-container>
     </form>
 
@@ -62,7 +74,7 @@
       <img src="/images/mt_lake.jpg" height="450">
     </div>
 
-    <div ng-show="(search.state && !search.recAreaID && !search.query)" layout="column" layout-padding layout-margin layout-fill>
+    <div ng-show="(search.state && !search.recAreaID && !search.query && !search.radius)" layout="column" layout-padding layout-margin layout-fill>
       <h3>
         Recreational Areas in <strong>{{ search.state }}</strong>: ({{ recareas.length }})
         <div id="loader" ng-if="$root.loading">
@@ -91,7 +103,7 @@
       </div>
     </div>
 
-    <div ng-show="search.recAreaID || search.query" layout="column" layout-padding layout-margin layout-fill>
+    <div ng-show="search.recAreaID || search.query || search.radius" layout="column" layout-padding layout-margin layout-fill>
       <h3>
         Facilities for: <strong>{{ getSearchRAName() }}</strong>: ({{ facilities.length }})
         <div id="loader" ng-if="$root.loading">
