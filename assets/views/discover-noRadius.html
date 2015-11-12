@@ -25,17 +25,6 @@
       </md-input-container>
     </form>
 
-    <form ng-submit="searchRadius()">
-      <md-input-container ng-show="recareas" layout="column">
-        <input ng-required ng-disabled="$root.loading" type="number" ng-model="search.radius" id="search-radius-input" name="radius" placeholder="Miles">
-      </md-input-container>
-      <md-input-container ng-show="recareas" layout="column">
-        <input ng-required ng-disabled="$root.loading" type="text" ng-model="search.placeName" id="search-placename-input" name="raduis" placeholder="Place Name">
-      </md-input-container>
-      <md-input-container ng-show="recareas" layout="column">
-        <input ng-disabled="!search.radius && !search.placeName" type="submit" id="search-query-submit" value="Submit" aria-label="Submit search-term query">
-      </md-input-container>
-    </form>
 
     <md-content layout-padding  ng-show="recareas">
 

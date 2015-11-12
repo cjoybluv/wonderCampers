@@ -45,26 +45,56 @@ body {
   margin-left:10px;
   margin-bottom: 10px;
 }
+#select-ra-block {
+  margin-bottom: -20px;
+}
+#search-query-block {
+  margin-bottom: -10px;
+  max-height: 70px;
+}
 #search-query {
   width: 100%;
 }
 #search-query-input {
   /*width: 84%;*/
-  border-radius: 10px 10px 0 0;
+  /*border-radius: 10px 10px 0 0;*/
   border-top: #46522C 2px solid;
   border-left: #46522C 2px solid;
   border-right: #46522C 2px solid;
+  margin-top: 12px;
+  width: 100%;
+  padding-top: 0;
 }
 #search-query-submit {
-  background-color: #46522c;
-  color: #C1C727;
-  font-weight: 900;
-  font-size: 1.25em;
-  border-radius: 0 0 10px 10px;
-  padding: 5px;
-  height: 40px;
-  margin-top: -28px;
+  position: absolute;
+  left: -9999px;
+  height: 1px;
+  width: 1px;
+  /*background-color: #46522c;*/
+  /*color: #C1C727;*/
+  /*font-weight: 900;*/
+  /*font-size: 1.25em;*/
+  /*border-radius: 0 0 10px 10px;*/
+  /*padding: 5px;*/
+  /*height: 40px;*/
+  /*margin-top: -28px;*/
   /*width: 86%;*/
+}
+#radius-input-block {
+  margin-bottom: -30px;
+}
+#search-radius-input {
+  width: 32px;
+  margin-left: 20px;
+  border: black 1px solid;
+  margin-bottom: 5px;
+  margin-right: 10px;
+}
+#search-placename-input {
+  height: 24px;
+}
+#content-block {
+  padding-left: 10px;
 }
 .result-list {
   /*background-color: yellow;*/
@@ -130,7 +160,12 @@ filter-item {
 .full-dialog {
   max-height: 600px;
 }
-
+.tight {
+  margin: 5px auto;
+}
+.small-font {
+  font-size: 0.75em;
+}
 
 @media (max-width: 960px) {
 
@@ -138,7 +173,7 @@ filter-item {
     margin-top: 6px;
     width: 350px;
     background-color: #46522C;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
   }
   .search-select * {
     color: #C1C727;
@@ -150,17 +185,17 @@ filter-item {
   }
   #search-query-input {
     /*width: 84%;*/
-    border-radius: 10px 10px 0 0;
+    /*border-radius: 10px 10px 0 0;*/
   }
   #search-query-submit {
     background-color: #46522c;
     color: #C1C727;
-    font-weight: 900;
-    font-size: 1.25em;
-    border-radius: 0 0 10px 10px;
-    padding: 5px;
-    height: 40px;
-    margin-top: -28px;
+    font-weight: 700;
+    font-size: 1.00em;
+    /*border-radius: 0 0 10px 10px;*/
+    /*padding: 5px;*/
+    /*height: 40px;*/
+    /*margin-top: -28px;*/
     /*width: 86%;*/
   }
   .full-dialog {
