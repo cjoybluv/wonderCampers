@@ -46,7 +46,10 @@ body {
   margin-bottom: 10px;
 }
 #select-ra-block {
-  margin-bottom: -20px;
+  margin-bottom: 0;
+}
+#ra-select {
+  margin-bottom: -5px;
 }
 #search-query-block {
   margin-bottom: -10px;

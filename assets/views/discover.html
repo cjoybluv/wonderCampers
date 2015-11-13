@@ -14,7 +14,7 @@
           <p>Selecting Recreational Area</p>
         </md-divider>
         <md-divider flex="66" class="small-font">
-          <md-select ng-disabled="$root.loading || !recareas" ng-model="search.recAreaID" ng-change="searchFacilities()">
+          <md-select ng-disabled="$root.loading || !recareas" ng-model="search.recAreaID" ng-change="searchFacilities()" id="ra-select">
             <md-option ng-repeat="recarea in recareas" value="{{recarea.RecAreaID}}">{{recarea.RecAreaName}} ({{recarea.FACILITY.length}})</md-option>
           </md-select>
           <span ng-show="search.recAreaID" ng-click="searchRecareas()" class="search-reset"><a href="#">reset</a></span>
@@ -160,7 +160,7 @@
       </md-content>
 
     </div>
-    v0.3.03
+    v0.3.04
   </md-content>
 </div>
 
