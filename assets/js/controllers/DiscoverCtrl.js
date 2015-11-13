@@ -9,17 +9,17 @@ WonderCampersApp.controller('DiscoverCtrl', ['$scope','$rootScope','AlertService
     { "ActivityID": 6, "ActivityName": "BOATING" },
     { "ActivityID": 11, "ActivityName": "FISHING" },
     { "ActivityID": 14, "ActivityName": "HIKING" },
-    { "ActivityID": 15, "ActivityName": "RIDING" },
     { "ActivityID": 16, "ActivityName": "HUNTING" },
-    { "ActivityID": 20, "ActivityName": "PICNIC" },
-    { "ActivityID": 22, "ActivityName": "WINTER" },
-    { "ActivityID": 25, "ActivityName": "SUMMER" },
-    { "ActivityID": 26, "ActivityName": "WILDLIFE" },
-    { "ActivityID": 28, "ActivityName": "WILDERNESS" },
-    { "ActivityID": 43, "ActivityName": "SNOWPARK" },
-    { "ActivityID": 106, "ActivityName": "SWIMMING" },
     { "ActivityID": 105, "ActivityName": "PADDLING" },
-    { "ActivityID": 23, "ActivityName": "RV" }
+    { "ActivityID": 20, "ActivityName": "PICNIC" },
+    { "ActivityID": 43, "ActivityName": "SNOWPARK" },
+    { "ActivityID": 25, "ActivityName": "SUMMER" },
+    { "ActivityID": 106, "ActivityName": "SWIMMING" },
+    { "ActivityID": 15, "ActivityName": "RIDING" },
+    { "ActivityID": 23, "ActivityName": "RV" },
+    { "ActivityID": 28, "ActivityName": "WILDERNESS" },
+    { "ActivityID": 26, "ActivityName": "WILDLIFE" },
+    { "ActivityID": 22, "ActivityName": "WINTER" }
   ];
 
 
