@@ -98,8 +98,13 @@
           <li>Enter a Search Term</li>
           <li>Search by Miles from Place Name</li>
         </ul>
+        <li>Filter your Results by:</li>
+        <ul>
+          <li>Check "Camping Only?" to reduce to only those with camping</li>
+          <li>Check off Activites to reduce to only those with at least one checked activity</li>
+        </ul>
       </ul>
-      <img src="/images/mt_lake.jpg" height="250">
+      <div flex layout="row" layout-align="end end"><img src="/images/mt_lake.jpg" height="250"></div>
     </div>
 
     <div ng-show="(search.state && !search.recAreaID && !search.query && !search.radius)" layout="column" layout-padding layout-margin layout-fill>
@@ -160,13 +165,7 @@
       </md-content>
 
     </div>
-    v0.3.04
+    v0.3.08
   </md-content>
 </div>
-
-
-
-
-
-
 
