@@ -44,8 +44,8 @@
                 <span><input ng-required ng-disabled="$root.loading" type="number" ng-model="search.radius" id="search-radius-input" name="radius" aria-label="search radius input"></span>
                 <span>Miles from: (enter placename)</span>
               </div>
-              <input ng-required ng-disabled="$root.loading" type="text" ng-model="search.placeName" id="search-placename-input" name="placeName" aria-label="place name input">
-              <input ng-disabled="!search.radius && !search.placeName" type="submit" id="search-query-submit" value="Submit" aria-label="Submit search-term query">
+              <input ng-required ng-disabled="$root.loading" type="search" ng-model="search.placeName" id="search-placename-input" name="placeName" aria-label="place name input">
+              <input ng-disabled="!search.radius && !search.placeName" type="submit" id="search-radius-submit" value="Search" aria-label="Submit search-term query">
             </div>
           </form>
         </md-divider>
@@ -181,7 +181,7 @@
       </md-content>
 
     </div>
-    v0.3.16
+    v0.3.17
   </md-content>
 </div>
 
