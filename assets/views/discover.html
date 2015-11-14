@@ -14,7 +14,7 @@
           <p>Selecting Recreational Area</p>
         </md-divider>
         <md-divider flex="66" class="small-font">
-          <md-select ng-disabled="$root.loading || !recareas" ng-model="search.recAreaID" ng-change="searchFacilities()" id="ra-select">
+          <md-select ng-disabled="$root.loading || !recareas" ng-model="search.recAreaID" ng-change="searchFacilities()" id="ra-select" aria-label="Select Recretional Area">
             <md-option ng-repeat="recarea in recareas" value="{{recarea.RecAreaID}}">{{recarea.RecAreaName}} ({{recarea.FACILITY.length}})</md-option>
           </md-select>
           <span ng-show="search.recAreaID" ng-click="searchRecareas()" class="search-reset"><a href="#">reset</a></span>
@@ -27,7 +27,7 @@
         <md-divider flex="66" class="small-font">
           <form ng-submit="searchQuery()">
             <md-input-container ng-show="recareas" flex layout="row">
-              <input ng-required ng-disabled="$root.loading" type="search" ng-model="search.query" id="search-query-input" name="text">
+              <input ng-required ng-disabled="$root.loading" type="search" ng-model="search.query" id="search-query-input" name="text" aria-label="Search Query Input">
               <button ng-hide="True" ng-disabled="!search.query" type="submit" id="search-query-submit" value="Go!" aria-label="Submit search-term query">Go!</button>
             </md-input-container>
           </form>
@@ -39,29 +39,28 @@
         </md-divider>
         <md-divider flex="66" class="small-font">
           <form ng-submit="searchRadius()">
-            <md-input-container ng-show="recareas" layout="column">
-              <div layout="row" layout-align="start center">
-                <span><input ng-required ng-disabled="$root.loading" type="number" ng-model="search.radius" ng-pattern="\b(\d|1[0-2])\b" id="search-radius-input" name="radius"></span>
+            <div ng-show="recareas" layout="column">
+              <div layout="row" layout-align="start center" style="margin-top:5px;">
+                <span><input ng-required ng-disabled="$root.loading" type="number" ng-model="search.radius" id="search-radius-input" name="radius" aria-label="search radius input"></span>
                 <span>Miles from: (enter placename)</span>
               </div>
-
-              <input ng-required ng-disabled="$root.loading" type="text" ng-model="search.placeName" id="search-placename-input" name="placeName">
+              <input ng-required ng-disabled="$root.loading" type="text" ng-model="search.placeName" id="search-placename-input" name="placeName" aria-label="place name input">
               <input ng-disabled="!search.radius && !search.placeName" type="submit" id="search-query-submit" value="Submit" aria-label="Submit search-term query">
-            </md-input-container>
+            </div>
           </form>
         </md-divider>
       </md-divider> <!-- row -->
 
-      <md-content layout-padding  ng-show="recareas">
+      <md-content layout-padding>
 
         <div layout="row" layout-align="start center">
-          <md-checkbox ng-disabled="$root.loading" ng-change="campingOnly()" ng-model="search.campingOnly" aria-label="Check for Camping Only">
+          <md-checkbox ng-disabled="$root.loading || !recareas" ng-change="campingOnly()" ng-model="search.campingOnly" aria-label="Check for Camping Only">
             Camping Only?
           </md-checkbox>
           <img src="/images/acticon-9.png" class="activity-icon">
         </div>
 
-        <md-grid-list
+        <md-grid-list ng-hide="$root.loading || !search.state"
             md-cols-sm="1" md-cols-md="3" md-cols-gt-md="5"
             md-row-height-gt-md="1:1" md-row-height="1:1"
             md-gutter="6px" md-gutter-gt-sm="4px" >
@@ -69,7 +68,8 @@
               ng-repeat="activity in filterList"
               class="filter-item"
               ng-class="{'activity-filtered':(isFiltered(activity.ActivityID))}">
-            <a ng-hide="$root.loading" ng-click="activityClicked(activity.ActivityID)" href="#" aria-label="Click to Filter on {{activity.ActivityName}}">
+
+            <a ng-click="activityClicked(activity.ActivityID)" href="#" aria-label="Click to Filter on {{activity.ActivityName}}">
               <img src="/images/acticon-{{activity.ActivityID}}.png" class="filter-icon">
               <md-grid-tile-footer layout-align="center end" class="filter-footer">
                 <h5>{{activity.ActivityName}}</h5>
@@ -77,6 +77,22 @@
             </a>
           </md-grid-tile>
         </md-grid-list>
+        <md-grid-list ng-show="$root.loading || !search.state"
+            md-cols-sm="1" md-cols-md="3" md-cols-gt-md="5"
+            md-row-height-gt-md="1:1" md-row-height="1:1"
+            md-gutter="6px" md-gutter-gt-sm="4px" >
+          <md-grid-tile
+              ng-repeat="activity in filterList"
+              class="filter-item"
+              ng-class="{'activity-filtered':(isFiltered(activity.ActivityID))}">
+
+            <img src="/images/acticon-{{activity.ActivityID}}.png" class="filter-icon">
+            <md-grid-tile-footer layout-align="center end" class="filter-footer">
+              <h5>{{activity.ActivityName}}</h5>
+            </md-grid-tile-footer>
+          </md-grid-tile>
+        </md-grid-list>
+
       </md-content>
 
 
@@ -165,7 +181,7 @@
       </md-content>
 
     </div>
-    v0.3.08
+    v0.3.16
   </md-content>
 </div>
 

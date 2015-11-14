@@ -1,5 +1,5 @@
 WonderCampersApp.controller('DiscoverCtrl', ['$scope','$rootScope','AlertService','$http','$sce','$mdDialog', function($scope,$rootScope,AlertService,$http,$sce,$mdDialog){
-  console.log('Discover controller');
+  // console.log('Discover controller');
 
   $rootScope.loading = false;
 
@@ -196,7 +196,7 @@ WonderCampersApp.controller('DiscoverCtrl', ['$scope','$rootScope','AlertService
   };
 
   $scope.searchRadius = function() {
-    console.log('searchRadius');
+    // console.log('searchRadius');
 
     $rootScope.loading = true;
     $scope.facilities = [];
@@ -212,7 +212,7 @@ WonderCampersApp.controller('DiscoverCtrl', ['$scope','$rootScope','AlertService
         state: $scope.search.state
       }
     }).then(function(data){
-      console.log('search return',data);
+      // console.log('search return',data);
       $scope.facilities = data.data;
       facilitiesReturned = data.data;
       $rootScope.loading = false;

@@ -94,12 +94,10 @@ module.exports = {
               full:true
           }
         },function(error,response,body) {
-              // console.log('response received ' + pageOffset);
               if(!error && response.statusCode === 200) {
                 myData.push(JSON.parse(body));
-                // console.log('facilities PUSH',myData.length);
               } else {
-                callback('error on request');
+                callback('error: RidbController,FacilityID request');
                 // res.send({
                 //   error:error,
                 //   code:response.statusCode
@@ -113,7 +111,7 @@ module.exports = {
         });
       }, function(err){
           if( err ) {
-            console.log('bad things');
+            console.log('ERR: RidbController,Async.FacilityIDs',err);
           } else {
             // console.log('facilities DONE',myData.length);
             myData.sort(sortFacilities);
@@ -124,7 +122,7 @@ module.exports = {
 
     }
     if (query) {
-      console.log('facilitiesQuery',query,state);
+      // console.log('facilitiesQuery',query,state);
       var outOfData = false;
       var pageOffset = 0;
       var totalCount = 0;
@@ -206,7 +204,7 @@ module.exports = {
                 totalCount = JSON.parse(body).METADATA.RESULTS.TOTAL_COUNT;
                 // console.log('response code 200 ',totalCount);
                 if (myData.length >= totalCount) {
-                  console.log('totalCount reached');
+                  // console.log('totalCount reached');
                   outOfData = true;
                 }
                 // setTimeout(callback, 5);
@@ -221,9 +219,9 @@ module.exports = {
             });
           },
           function (err) {
-            console.log('async done');
+            // console.log('async done');
             myData.sort(sortFacilities);
-            console.log('myData.length',myData.length);
+            // console.log('myData.length',myData.length);
             res.send(myData);
           }
         );

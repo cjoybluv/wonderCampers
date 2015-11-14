@@ -1,7 +1,7 @@
 WonderCampersApp.controller('NavCtrl', ['$scope','UserService','$mdDialog','$location', function($scope,UserService,$mdDialog,$location){
 
   // UserService.logout();
-  console.log('nav ctrl new');
+  // console.log('nav ctrl new');
 
   $scope.UserService = UserService;
   $scope.$watchCollection('UserService', function(){

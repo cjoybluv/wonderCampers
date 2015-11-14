@@ -6,7 +6,7 @@ WonderCampersApp.run(['UserService',function(UserService){
   console.log('wonderCamper reporting for duty');
 
   UserService.check(function(err,data){
-    console.log('checking...',err,data);
+    // console.log('checking...',err,data);
   });
 
 }]);
