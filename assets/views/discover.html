@@ -26,9 +26,9 @@
         </md-divider>
         <md-divider flex="66" class="small-font">
           <form ng-submit="searchQuery()">
-            <md-input-container ng-show="recareas" flex layout="row">
-              <input ng-required ng-disabled="$root.loading" type="search" ng-model="search.query" id="search-query-input" name="text" aria-label="Search Query Input">
-              <button ng-hide="True" ng-disabled="!search.query" type="submit" id="search-query-submit" value="Go!" aria-label="Submit search-term query">Go!</button>
+            <md-input-container ng-show="recareas" flex layout="row" layout-align="start center">
+              <span style="float:left;width:90%;"><input ng-required ng-disabled="$root.loading" type="text" ng-model="search.query" id="search-query-input" name="text" aria-label="Search Query Input"></span>
+              <span style="float:right;"><button ng-disabled="!search.query" type="submit" id="search-query-submit" value="Go!" aria-label="Submit search-term query">Go!</button></span>
             </md-input-container>
           </form>
         </md-divider>
@@ -44,8 +44,10 @@
                 <span><input ng-required ng-disabled="$root.loading" type="number" ng-model="search.radius" id="search-radius-input" name="radius" aria-label="search radius input"></span>
                 <span>Miles from: (enter placename)</span>
               </div>
-              <input ng-required ng-disabled="$root.loading" type="search" ng-model="search.placeName" id="search-placename-input" name="placeName" aria-label="place name input">
-              <input ng-disabled="!search.radius && !search.placeName" type="submit" id="search-radius-submit" value="Search" aria-label="Submit search-term query">
+              <div layout="row" flex layout-align="start center">
+                <span style="float:left;width:90%;"><input ng-required ng-disabled="$root.loading" type="search" ng-model="search.placeName" id="search-placename-input" name="placeName" aria-label="place name input" style="width:100%;"></span>
+                <span style="float:right;"><button ng-disabled="!search.radius && !search.placeName" type="submit" id="search-radius-submit" value="Go!" aria-label="Submit search-term query">Go!</button></span>
+              </div>
             </div>
           </form>
         </md-divider>
@@ -181,7 +183,7 @@
       </md-content>
 
     </div>
-    v0.3.17
+    v0.3.20
   </md-content>
 </div>
 
