@@ -102,12 +102,13 @@ body {
   border-top: #46522C 0 solid;
   border-left: #46522C 0 solid;
   border-right: #46522C 0 solid;
-  border-radius: 0;
+  border-radius: 0 0 0 0;
 }
 #search-radius-submit {
   position: relative;
   height: 32px;
   top: -2px;
+  border-radius: 0 0 0 0;
 }
 #content-block {
   padding-left: 10px;
