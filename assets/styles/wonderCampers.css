@@ -215,6 +215,10 @@ filter-item {
     /*margin-top: -28px;*/
     /*width: 86%;*/
   }
+  #radius-input-block {
+    margin-bottom: 5px;
+  }
+
   .full-dialog {
     max-height: 300px;
   }
